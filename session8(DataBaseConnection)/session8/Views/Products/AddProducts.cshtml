@@ -1,0 +1,63 @@
+﻿@using session8.ViewModel
+@model AddProductsViewModel
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Add New Product</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-controller="AddProducts" asp-action="AddProducts" method="POST">
+
+                        <!-- Product Name -->
+                        <div class="mb-3">
+                            <label for="productName" class="form-label">Product Name</label>
+                            <input asp-for="name" type="text" class="form-control" id="productName" placeholder="e.g. Wireless Headphones" required>
+                        </div>
+
+                        <div class="row">
+                            <!-- Price -->
+                            <div class="col-md-6 mb-3">
+                                <label for="price" class="form-label">Price ($)</label>
+                                <input asp-for="price" type="number" class="form-control" id="price" step="0.01" placeholder="0.00" required>
+                            </div>
+
+                            <!-- Stock/Quantity -->
+                            <div class="col-md-6 mb-3">
+                                <label for="stock" class="form-label">Stock Quantity</label>
+                                <input asp-for="stock" type="number" class="form-control" id="stock" placeholder="0" required>
+                            </div>
+                        </div>
+
+                        <!-- Category -->
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Category</label>
+                            <select asp-for="category" class="form-select" id="category" required>
+                                <option value="" selected disabled>Choose a category...</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="fashion">Fashion</option>
+                                <option value="home">Home & Kitchen</option>
+                                <option value="beauty">Beauty & Health</option>
+                            </select>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-4">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea asp-for="description" class="form-control" id="description" rows="4" placeholder="Enter product details..."></textarea>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            @* <button type="reset" class="btn btn-outline-secondary me-md-2">Clear</button> *@
+                            <button type="submit" class="btn btn-primary px-4">Save Product</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿@model UserModel
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 mb-5">
+
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>User Details</h4>
+                </div>
+
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <strong>User Name:</strong> @Model.name
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Email:</strong> @Model.email
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Password:</strong> @Model.password
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Phone:</strong> @Model.phone
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card-footer text-center">
+                    <button class="btn btn-primary">Edit</button>
+                    <button class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

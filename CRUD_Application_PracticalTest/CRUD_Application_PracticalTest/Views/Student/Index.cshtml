@@ -1,0 +1,39 @@
+﻿@model List<Student>
+<h1>All Student</h1>
+<div class="container">
+    <table class="table table-border table-striped-columns">
+        <thead>
+            <tr>
+            <th>S.No</th>
+            <th>Student Name</th>
+            <th>Student Email</th>
+            <th>Date of birth</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+       
+        <tbody>
+            @{
+                int counter = 1;
+            }
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@counter</td>
+                    <td>@student.StudentName</td>
+                    <td>@student.StudentEmail</td>
+                    <td>@student.DateOfBirth.ToShortDateString()</td>
+                    <td>
+                        <a class="btn btn-success" asp-controller="Student" asp-action="EditStudent" asp-route-id="@student.StudentId">Update</a>
+                        <form asp-controller="Student" asp-action="Delete" asp-route-id="@student.StudentId" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete @student.StudentName?')">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                counter++;
+            }
+        </tbody>
+    </table>
+</div>

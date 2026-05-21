@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<section class="bg-light py-5">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-10 mx-auto text-center">
+                <!-- Huge text using display-1 and bold weight -->
+                <h1 class="display-1 fw-bold text-dark mb-4">
+                    Student Management System
+                </h1>
+
+                <p class="lead text-muted mb-5 fs-4">
+                    A powerful ASP.NET Core MVC solution to manage students,
+                    enrollments, and academic performance in one central hub.
+                </p>
+
+                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                    <!-- Standard MVC Action Links styled as Bootstrap buttons -->
+                    <a asp-controller="Student" asp-action="Index"
+                       class="btn btn-primary btn-lg px-5 py-3 fw-semibold">
+                        Manage Students
+                    </a>
+                    <a asp-controller="Student" asp-action="AddStudent"
+                       class="btn btn-outline-dark btn-lg px-5 py-3 fw-semibold">
+                        Add Student
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

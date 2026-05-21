@@ -1,0 +1,25 @@
+﻿@model CRUDApplication.ViewModel.StudentViewModel
+
+<h1>Edit Student Records</h1>
+
+<div class="container">
+    <form class="form" asp-action="EditStudent" asp-controller="Student" method="post">
+        <input type="hidden" asp-for="StudentId" />
+
+        <div class="mb-3">
+            <label asp-for="StudentName" class="form-label">Student Name</label>
+            <input asp-for="StudentName" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="StudentEmail" class="form-label">Student Email</label>
+            <input asp-for="StudentEmail" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="DateOfBirth" class="form-label">Date of Birth</label>
+            <input asp-for="DateOfBirth" class="form-control" type="date" />
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-success">Update Student</button>
+        </div>
+    </form>
+</div>

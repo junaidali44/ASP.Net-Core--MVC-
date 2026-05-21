@@ -1,0 +1,16 @@
+﻿@model Authenttication.ViewModel.LoginViewModel;
+
+<div class="container">
+    <h1 class="title">Login</h1>
+    <form asp-controller="Home" asp-action="Index" method="post" > 
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input asp-for="Username" type="email" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input asp-for="Password" type="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Sign Up</button>
+    </form>
+</div>

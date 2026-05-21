@@ -1,0 +1,50 @@
+﻿@model User
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">User Registration</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Index" asp-controller="Example" method="POST">
+                        <!-- Name Field -->
+                        <div class="mb-3">
+                            <label for="userName" class="form-label">Full Name</label>
+                            <input asp-for="name" type="text" class="form-control"  name="name" placeholder="John Doe" >
+                            <span class="text-danger" asp-validation-for="name"></span>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="mb-3">
+                            <label for="userEmail" class="form-label">Email Address</label>
+                            <input asp-for="email"  type="email" class="form-control" id="userEmail" name="email" placeholder="name@example.com" >
+                            <span class="text-danger" asp-validation-for="email"></span>
+                        </div>
+
+                        <!-- Age Field -->
+                        @* <div class="mb-3">
+                            <label for="userAge" class="form-label">Age</label>
+                            <input  asp-for="age" type="number" class="form-control" id="userAge" name="age" min="1" max="120" placeholder="e.g. 25">
+                            <span class="text-danger" asp-validation-for="age"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userPhone" class="form-label">Phone Number</label>
+                            <input asp-for="PhoneNumber" class="form-control" id="userphone" name="phone" placeholder="e.g. 03222 55 888">
+                            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input asp-for="Password"  class="form-control" id="password" name="password">
+                            <span class="text-danger" asp-validation-for="Password"></span> *@
+                        @* </div> *@
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FileUploadingWithDatabase.Models.DocumentModel>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>All Files</h1>
+        <a asp-action="Add" class="btn btn-success">Upload New File</a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">No files found.</div>
+    }
+    else
+    {
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Original Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var doc in Model)
+                {
+                    <tr>
+                        <td>@doc.Tittle</td>
+                        <td>@doc.Description</td>
+                        <td>@doc.FileName</td>
+                        <td>
+                            <a href="@doc.FilePath" target="_blank" class="btn btn-sm btn-primary">View / Download</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
