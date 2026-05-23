@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "_AdminLayout";
+}
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="login-container">
+    <div class="login-card">
+        <div class="mall-logo"><span class="material-symbols-outlined" style="font-size: 64px;">shopping_bag</span><h2 style="margin-top: 8px;">ABCD MALL</h2></div>
+        <h3 style="text-align:center; margin-bottom:24px;">Admin Portal</h3>
+        <div class="input-group"><span class="material-symbols-outlined">person</span><input type="text" id="username" placeholder="Username" value="admin"></div>
+        <div class="input-group"><span class="material-symbols-outlined">lock</span><input type="password" id="password" placeholder="Password" value="admin123"><span class="material-symbols-outlined password-toggle" onclick="togglePassword()">visibility</span></div>
+        <div class="checkbox-group" style="display:flex; justify-content:space-between; margin-bottom:24px;"><label><input type="checkbox"> Remember Me</label><a href="#" style="color:#6C63FF;">Forgot Password?</a></div>
+        <button class="btn-login" onclick="handleLogin()">Login to Dashboard</button>
+    </div>
+</div>

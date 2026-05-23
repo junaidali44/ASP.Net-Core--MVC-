@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Food Court - ABCD MALL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#43436c",
+                        "background": "#fbf9f8",
+                        "primary-fixed": "#e3dfff",
+                        "tertiary": "#585883",
+                        "on-background": "#1b1c1c",
+                        "tertiary-container": "#71709d",
+                        "secondary-fixed-dim": "#ffb2bc",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e4e2e1",
+                        "on-primary-container": "#fffbff",
+                        "outline-variant": "#c7c4d8",
+                        "surface-container": "#f0eded",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary": "#b0284b",
+                        "on-secondary-container": "#670023",
+                        "primary-container": "#675df9",
+                        "tertiary-fixed": "#e2dfff",
+                        "outline": "#777587",
+                        "inverse-surface": "#303030",
+                        "tertiary-fixed-dim": "#c3c2f3",
+                        "primary": "#4d41df",
+                        "surface-bright": "#fbf9f8",
+                        "secondary-container": "#fd6483",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-high": "#eae8e7",
+                        "on-tertiary-fixed": "#17173e",
+                        "on-surface-variant": "#464555",
+                        "on-primary-fixed": "#100069",
+                        "surface": "#fbf9f8",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#8f0935",
+                        "inverse-primary": "#c4c0ff",
+                        "surface-container-highest": "#e4e2e1",
+                        "on-secondary-fixed": "#400012",
+                        "on-primary-fixed-variant": "#3622ca",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#4f44e2",
+                        "secondary-fixed": "#ffd9dd",
+                        "surface-dim": "#dcd9d9",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f3f0f0",
+                        "surface-container-low": "#f6f3f2",
+                        "primary-fixed-dim": "#c4c0ff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "margin-mobile": "16px",
+                        "max-width": "1280px",
+                        "margin-desktop": "48px",
+                        "gutter": "24px",
+                        "section-gap": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(27, 28, 28, 0.8), rgba(27, 28, 28, 0));
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-container-highest/80 backdrop-blur-md border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="max-w-[1280px] mx-auto px-margin-desktop flex items-center justify-between h-20">
+<div class="font-display-lg text-display-lg text-secondary dark:text-secondary-fixed tracking-tight hover:scale-105 transition-transform duration-300 ease-out cursor-pointer">
+                ABCD MALL
+            </div>
+<nav class="hidden md:flex items-center gap-stack-lg">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="home.html">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="shop.html">Shops</a>
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1 font-body-md text-body-md" href="FoodCourt.html">Food Court</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="Movies.html">Movies</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="contactFeedback.html">Contact</a>
+</nav>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-primary p-2 hover:scale-105 transition-transform">shopping_bag</button>
+<button class="material-symbols-outlined text-primary p-2 hover:scale-105 transition-transform">person</button>
+<button class="md:hidden material-symbols-outlined text-primary">menu</button>
+</div>
+</div>
+</header>
+<main class="mt-20">
+<!-- Hero Section -->
+<section class="relative h-[450px] overflow-hidden">
+<img alt="Food Court Interior" class="w-full h-full object-cover" src="https://images.pexels.com/photos/34884133/pexels-photo-34884133.jpeg"/>
+<div class="absolute inset-0 hero-gradient flex flex-col justify-center px-margin-desktop">
+<div class="max-w-[1280px] mx-auto w-full">
+<span class="bg-secondary text-on-secondary px-4 py-1 rounded-full font-label-sm text-label-sm mb-stack-md inline-block uppercase tracking-widest">Mumbai's Finest</span>
+<h1 class="text-white font-display-lg text-display-lg mb-4 leading-tight">20+ Cuisines | 50+ Dishes</h1>
+<p class="text-white/80 font-body-lg text-body-lg max-w-xl">Experience the ultimate culinary journey. From local street delicacies to international gourmet experiences, all under one spectacular ceiling.</p>
+</div>
+</div>
+</section>
+<div class="max-w-[1280px] mx-auto px-margin-desktop py-12">
+<!-- Title -->
+<div class="mb-stack-lg">
+<h2 class="font-display-lg text-display-lg text-on-background mb-stack-sm">🍽️ Food Court - A World of Flavors</h2>
+<div class="h-1.5 w-32 bg-primary-container rounded-full"></div>
+</div>
+<!-- Category Chips -->
+<div class="flex gap-3 overflow-x-auto pb-4 hide-scrollbar mb-10">
+<button class="px-6 py-2.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm whitespace-nowrap shadow-lg shadow-primary/20">All</button>
+<button class="px-6 py-2.5 rounded-full glass-effect text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap hover:bg-primary-fixed hover:text-on-primary-fixed transition-all border border-outline-variant">North Indian</button>
+<button class="px-6 py-2.5 rounded-full glass-effect text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap hover:bg-primary-fixed hover:text-on-primary-fixed transition-all border border-outline-variant">South Indian</button>
+<button class="px-6 py-2.5 rounded-full glass-effect text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap hover:bg-primary-fixed hover:text-on-primary-fixed transition-all border border-outline-variant">Chinese</button>
+<button class="px-6 py-2.5 rounded-full glass-effect text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap hover:bg-primary-fixed hover:text-on-primary-fixed transition-all border border-outline-variant">Italian</button>
+<button class="px-6 py-2.5 rounded-full glass-effect text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap hover:bg-primary-fixed hover:text-on-primary-fixed transition-all border border-outline-variant">Fast Food</button>
+<button class="px-6 py-2.5 rounded-full glass-effect text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap hover:bg-primary-fixed hover:text-on-primary-fixed transition-all border border-outline-variant">Desserts</button>
+<button class="px-6 py-2.5 rounded-full glass-effect text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap hover:bg-primary-fixed hover:text-on-primary-fixed transition-all border border-outline-variant">Beverages</button>
+</div>
+<!-- Search & Filters -->
+<div class="flex flex-col md:flex-row gap-gutter items-center mb-section-gap">
+<div class="relative flex-grow w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-xl border-none ring-1 ring-outline-variant focus:ring-2 focus:ring-primary bg-white shadow-sm font-body-md transition-all" placeholder="Search for dishes, cuisines, or counters..." type="text"/>
+</div>
+<div class="flex items-center gap-6 w-full md:w-auto shrink-0">
+<label class="inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="relative w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+<span class="ms-3 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wide">Veg Only</span>
+</label>
+<div class="flex items-center gap-2 glass-effect px-4 py-2 rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[20px]">filter_list</span>
+<span class="font-label-sm text-label-sm">Price Range</span>
+</div>
+</div>
+</div>
+<!-- Popular Dishes -->
+<div class="mb-section-gap">
+<div class="flex justify-between items-end mb-stack-lg">
+<h3 class="font-headline-lg text-headline-lg">Trending Now</h3>
+<button class="text-primary font-label-sm text-label-sm uppercase tracking-wider flex items-center gap-1 hover:gap-2 transition-all">View All <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+<div class="flex gap-gutter overflow-x-auto pb-8 hide-scrollbar">
+<!-- Trending Item 1 -->
+<div class="min-w-[280px] group cursor-pointer">
+<div class="relative h-40 rounded-2xl overflow-hidden mb-3">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A gourmet cheeseburger with melting cheddar, caramelized onions, and crisp lettuce on a toasted brioche bun. The lighting is dramatic and warm, highlighting the textures of the meat and fresh vegetables against a moody, dark background. The overall aesthetic is high-end and appetizing, fitting a luxury food court menu." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz1ookJQzF0F1ksiZjzfB-QO-hBI-REKxaZjbsDFP6PRNhA-Yt9fikRo_RILQDJVziuEmBRSQtHFGvCs6rYUOx6zY6TTLg1zYMNrgpWPGfVR4kkNoYI5On9sMxt0X2uDzVrZ5KzspLWeyvh3aNd_TBvwJ1ZJgehyQLl8x203Cy_SAqEDj9v0xmdvWVx4RvoFJTYMil9zydZmvQxnUmAYjTyarGPZdawCFezpB9pxBd71yZt8wvRVZh45KlZo6lQw_D_llBdH7xLsx8"/>
+<div class="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-secondary uppercase">Best Seller</div>
+</div>
+<h4 class="font-headline-md text-headline-md mb-1 group-hover:text-primary transition-colors">Truffle Beef Burger</h4>
+<p class="text-outline font-label-sm text-label-sm mb-2">The Burger Co.</p>
+<div class="flex justify-between items-center">
+<span class="font-body-lg text-body-lg font-bold text-on-background">₹499</span>
+<button class="bg-primary-container text-on-primary-container p-2 rounded-full hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[20px]">add</span></button>
+</div>
+</div>
+<!-- Trending Item 2 -->
+<div class="min-w-[280px] group cursor-pointer">
+<div class="relative h-40 rounded-2xl overflow-hidden mb-3">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A vibrant and fresh Buddha bowl filled with avocado, quinoa, roasted chickpeas, and colorful microgreens. The image is captured in bright, natural morning light, creating a clean and health-conscious vibe. Soft shadows and a minimalist white tabletop environment emphasize the premium quality and freshness of the ingredients." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYWIQ-AWTb1xUWX8wtXebGjpH5HirBvhdW9xq-rRH1Rfu9Tgdziafmkuf-V43wfcV-UK9V4zStLVvMekGAfkqgzByte65y50zM5HX277AJgaVEzPbot92T2znJzveYx50PZtbMgV6Jf8kRjuP_DHNMnyuZQJpEi5tiNaQhCTCCnJuJfSgWA4xtg4I3n6S4KzOT4FP6EMTtHGBMWkajtjNcGAyXUuwdxkJPBudZ0s6zpk5fFaRsZAVpXWFfDxe-czufWyDyWs3doPgY"/>
+</div>
+<h4 class="font-headline-md text-headline-md mb-1 group-hover:text-primary transition-colors">Quinoa Power Bowl</h4>
+<p class="text-outline font-label-sm text-label-sm mb-2">Green Kitchen</p>
+<div class="flex justify-between items-center">
+<span class="font-body-lg text-body-lg font-bold text-on-background">₹350</span>
+<button class="bg-primary-container text-on-primary-container p-2 rounded-full hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[20px]">add</span></button>
+</div>
+</div>
+<!-- Trending Item 3 -->
+<div class="min-w-[280px] group cursor-pointer">
+<div class="relative h-40 rounded-2xl overflow-hidden mb-3">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="An authentic Neapolitan pizza with blistered crust, fresh buffalo mozzarella, and vibrant basil leaves. The lighting is warm and directional, reminiscent of a wood-fired oven glow. The composition is artistic, focusing on the melting cheese and the rustic texture of the handmade dough, set against a dark stone surface for high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA40Yku03A23z4xUBJwKzGLEew0a0pJm_KPfoq7PvOu0y8L4ior48Ys77kt559karOONFl4sVJ-9OkNgWBqP3HDIws_Ru4R2QHMIh25UmunV_x0v9TvfONhh8DksmQbn9H6iNyFHqy0m7c0RhVN16CgoCQdYNiC8P2we-YctcMRFOScxEg1BO-DrcPw6JzLTGuEQ2jE3UCrHq9vqrjnRMqd8KVrYotq42WnzATKpB8z6eSHKdR9sQeXJcyaZKWgtoxCchyvpMIpIgyj"/>
+</div>
+<h4 class="font-headline-md text-headline-md mb-1 group-hover:text-primary transition-colors">Classic Margherita</h4>
+<p class="text-outline font-label-sm text-label-sm mb-2">Italiano Express</p>
+<div class="flex justify-between items-center">
+<span class="font-body-lg text-body-lg font-bold text-on-background">₹550</span>
+<button class="bg-primary-container text-on-primary-container p-2 rounded-full hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[20px]">add</span></button>
+</div>
+</div>
+<!-- Trending Item 4 -->
+<div class="min-w-[280px] group cursor-pointer">
+<div class="relative h-40 rounded-2xl overflow-hidden mb-3">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Three artisanal cupcakes with swirls of pink frosting and gold leaf accents, presented on a polished white marble stand. The background is softly blurred with hints of a luxury cafe interior. The light is soft and diffused, creating a dreamy and indulgent atmosphere that perfectly matches a high-end dessert counter's branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFXzGVAne3sNhS0IUFcAcy-fqVlhSCogu5wDp_W5ZQvwTta8zHqZ2wWqJ0-g6ciPfQqGv_BdJZvkRAmqcaIpJwmJUhqDgVANbtGiKJnilZRGVcSjmKpUJc0IHMjnnKaYbki7uQpusw1LIGINN7k4s8nnY5zHuh5N8XLWlmfuNEwEF6Nkoe6j9h3KF2BQKyeFDZkxSQDqkqtMgwomTGhl6l4PwT9exoDmkklBI_MtBKUgoB-jTuQlujp827Itlknf8__UvlHXZTyul9"/>
+</div>
+<h4 class="font-headline-md text-headline-md mb-1 group-hover:text-primary transition-colors">Berry Bliss Cupcakes</h4>
+<p class="text-outline font-label-sm text-label-sm mb-2">Sweet Temptations</p>
+<div class="flex justify-between items-center">
+<span class="font-body-lg text-body-lg font-bold text-on-background">₹220</span>
+<button class="bg-primary-container text-on-primary-container p-2 rounded-full hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[20px]">add</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Food Counter Grid -->
+<div class="mb-section-gap">
+<h3 class="font-headline-lg text-headline-lg mb-stack-lg">Explore Counters</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Counter Card 1 -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(77,65,223,0.04)] hover:shadow-[0_20px_40px_rgba(77,65,223,0.1)] transition-all duration-300 border border-outline-variant/30 flex flex-col">
+<div class="relative h-[200px]">
+<img class="w-full h-full object-cover" data-alt="The elegant exterior of a modern Italian pasta counter within a luxury mall. The counter is made of white marble and dark wood, with warm spotlighting highlighting rows of fresh pasta. The overall scene is clean and upscale, with a professional chef visible in the background, conveying a high-quality dining experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpH0g-XTUNyo6DWH5ctHpDRVGNrhxwRjFjNMtRRd4UEcKhog6Ssf6zye6lbadLA4aFnwtdkalfVYqJkGVrFKisofmVsUpDYIfRFLRbO0GoG_gE6Z5TClc5fHc_yfiG2-TCW3iB0fh52zYaI99-QupH4UCX0_I0E9PLWIz42_eAwm_-IbuG7fTLAWD_AQhj7SbRCKP76A5XQhXDFyHV5AbZ97AO2TZNSIQkIXF9DoMHPOuKv-I9vyoPCNz9snuVtWEZw8mqGCv8yzLz"/>
+<span class="absolute top-4 left-4 bg-secondary text-white px-3 py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wide">Italian</span>
+</div>
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-md text-[22px] leading-tight text-on-background">Italiano Express</h4>
+<div class="flex items-center gap-1 bg-surface-container-low px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">4.8</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-outline mb-6">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="font-body-md text-body-md">Counter 12, Floor 3</span>
+</div>
+<button class="w-full py-3 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all active:scale-95">View Menu</button>
+</div>
+</div>
+<!-- Counter Card 2 -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(77,65,223,0.04)] hover:shadow-[0_20px_40px_rgba(77,65,223,0.1)] transition-all duration-300 border border-outline-variant/30 flex flex-col">
+<div class="relative h-[200px]">
+<img class="w-full h-full object-cover" data-alt="A sophisticated sushi and ramen counter with neon signs and sleek dark surfaces. The lighting is cool-toned with pops of vibrant pink and purple, creating a modern 'Neo-Tokyo' aesthetic. Steam rises from a ramen bowl, adding a sense of action and freshness to the meticulously designed food station." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9neGj1fqGEUCJIMnfEc6JKSdP-9n4kcnTcPV8c_aL5fYZ6cF0_oo4b9Mw0sJmmGxJJbxzUrGx9Uha1rK4NpTEJARSIiwgl6PMKD3mjkSBAW-Thjj9FgJH3URI1uRMbyBc8tKyF5i-DONh6N34LamcKF6HJ9BGdZOU40PHupe9hN5WYKItj7YEk4x_KBxrchMFyMOzscIf43IyEny514pSLTC_GQOYgV84UnudXa2ciQnWXCZ4QCt-W8eSn-ZM0PfGJXNznDywGn-8"/>
+<span class="absolute top-4 left-4 bg-secondary text-white px-3 py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wide">Japanese</span>
+</div>
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-md text-[22px] leading-tight text-on-background">Sakura Delights</h4>
+<div class="flex items-center gap-1 bg-surface-container-low px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">4.9</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-outline mb-6">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="font-body-md text-body-md">Counter 05, Floor 3</span>
+</div>
+<button class="w-full py-3 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all active:scale-95">View Menu</button>
+</div>
+</div>
+<!-- Counter Card 3 -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(77,65,223,0.04)] hover:shadow-[0_20px_40px_rgba(77,65,223,0.1)] transition-all duration-300 border border-outline-variant/30 flex flex-col">
+<div class="relative h-[200px]">
+<img class="w-full h-full object-cover" data-alt="A bustling North Indian kitchen counter featuring tandoors and decorative copper vessels. The atmosphere is warm and traditional yet clean and modern, with soft yellow lighting casting long shadows. Trays of colorful curries and freshly baked naan are visible, highlighting the rich culinary heritage in a premium setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgjUmWTesqKsJJuvLZ0RKCIp14fj2HqrgGebjQNXtpFZR8pcZ8AM7QidwI_MPLXf9fgYwRjcvTfDBKTOqw5IAwIGr8rDLNGk1fsLN2v_oAYS4co7M0SP_M8AqoVAdHgcqej7RB3YHoROORPBFqojnNv9xssjkUVqkY81eDaqiHkr8jN66KwrLVJVYcqy1l7ph2We-3Lil3DM4xkjLr8158cRP_B1MWRIiYfv4H08PZA4OZfPdUl0yBgdEQJhOF1S_ICSl_VI0uZYN_"/>
+<span class="absolute top-4 left-4 bg-secondary text-white px-3 py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wide">Indian</span>
+</div>
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-md text-[22px] leading-tight text-on-background">Spice of India</h4>
+<div class="flex items-center gap-1 bg-surface-container-low px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">4.7</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-outline mb-6">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="font-body-md text-body-md">Counter 21, Floor 3</span>
+</div>
+<button class="w-full py-3 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all active:scale-95">View Menu</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Offers Section -->
+<section class="bg-primary rounded-[2rem] p-stack-lg overflow-hidden relative">
+<div class="absolute top-0 right-0 w-1/3 h-full bg-white/5 skew-x-[-15deg] translate-x-20"></div>
+<div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-gutter">
+<div>
+<h3 class="text-white font-headline-lg text-headline-lg mb-2">Combo Meal Deals</h3>
+<p class="text-white/80 font-body-lg text-body-lg mb-stack-md">Enjoy up to 25% off on our specially curated family platters. Valid every weekday!</p>
+<div class="flex gap-4">
+<div class="bg-white/20 backdrop-blur px-4 py-2 rounded-lg border border-white/30 text-white font-label-sm text-label-sm">CODE: ABCD25</div>
+<button class="bg-secondary-container text-on-secondary-container px-6 py-2 rounded-lg font-bold hover:scale-105 transition-transform">Claim Now</button>
+</div>
+</div>
+<div class="hidden md:block">
+<div class="w-48 h-48 rounded-full border-8 border-white/10 flex items-center justify-center">
+<div class="text-center">
+<p class="text-white font-display-lg text-[42px] leading-none mb-1">HAPPY</p>
+<p class="text-secondary-fixed-dim font-bold tracking-[0.3em]">HOURS</p>
+<p class="text-white/60 text-xs mt-2 italic">4 PM - 7 PM</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant mt-section-gap">
+<div class="max-w-[1280px] mx-auto px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="col-span-1 md:col-span-1">
+<div class="font-display-lg text-display-lg text-primary dark:text-inverse-primary mb-stack-md">ABCD MALL</div>
+<p class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md">The heart of Mumbai's premium shopping and dining experience. Redefining luxury every day.</p>
+</div>
+<div class="flex flex-col gap-3">
+<h5 class="text-on-surface font-bold font-headline-md text-headline-md mb-2">Explore</h5>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-transform duration-200 hover:translate-x-1" href="#">About</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-transform duration-200 hover:translate-x-1" href="shop.html">Shops</a>
+<a class="text-secondary font-semibold hover:translate-x-1 transition-transform" href="#">Dining</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-transform duration-200 hover:translate-x-1" href="#">Cinema</a>
+</div>
+<div class="flex flex-col gap-3">
+<h5 class="text-on-surface font-bold font-headline-md text-headline-md mb-2">Useful Links</h5>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-transform duration-200 hover:translate-x-1" href="#">Careers</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-transform duration-200 hover:translate-x-1" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-transform duration-200 hover:translate-x-1" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-transform duration-200 hover:translate-x-1" href="contactFeedback.html">Contact</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-on-surface font-bold font-headline-md text-headline-md mb-2">Newsletter</h5>
+<p class="text-on-surface-variant dark:text-surface-variant font-label-sm text-label-sm uppercase tracking-wide">Stay Updated</p>
+<div class="flex gap-2">
+<input class="bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary w-full" placeholder="Email" type="email"/>
+<button class="bg-primary text-on-primary p-2 rounded-lg hover:scale-105 transition-all"><span class="material-symbols-outlined">send</span></button>
+</div>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto px-margin-desktop py-6 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-on-surface-variant dark:text-surface-variant font-label-sm text-label-sm">© 2024 ABCD Mall Mumbai. All Rights Reserved.</p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary transition-colors">brand_awareness</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary transition-colors">public</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary transition-colors">chat_bubble</span>
+</div>
+</div>
+</footer>
+<button class="fixed bottom-8 right-8 bg-primary text-on-primary w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 transition-opacity duration-300 hover:scale-110 active:scale-95" id="backToTop">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<script>
+        // Smooth scroll to top
+        const backToTopBtn = document.getElementById('backToTop');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                backToTopBtn.classList.remove('opacity-0');
+                backToTopBtn.classList.add('opacity-100');
+            } else {
+                backToTopBtn.classList.add('opacity-0');
+                backToTopBtn.classList.remove('opacity-100');
+            }
+        };
+        backToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        // Category chips active state toggle
+        const chips = document.querySelectorAll('.hide-scrollbar button');
+        chips.forEach(chip => {
+            chip.onclick = () => {
+                chips.forEach(c => {
+                    c.classList.remove('bg-primary', 'text-on-primary', 'shadow-lg', 'shadow-primary/20');
+                    c.classList.add('glass-effect', 'text-on-surface-variant', 'border', 'border-outline-variant');
+                });
+                chip.classList.add('bg-primary', 'text-on-primary', 'shadow-lg', 'shadow-primary/20');
+                chip.classList.remove('glass-effect', 'text-on-surface-variant', 'border', 'border-outline-variant');
+            };
+        });
+    </script>
+</body></html>

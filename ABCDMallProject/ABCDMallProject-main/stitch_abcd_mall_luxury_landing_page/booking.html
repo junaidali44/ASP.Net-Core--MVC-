@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexus One - Seat Selection | ABCD MALL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .seat-grid {
+            perspective: 1000px;
+        }
+        .screen-curve {
+            height: 120px;
+            width: 100%;
+            background: linear-gradient(to bottom, #4d41df 0%, transparent 100%);
+            mask-image: radial-gradient(120% 100% at 50% 0%, black 50%, transparent 100%);
+            -webkit-mask-image: radial-gradient(120% 100% at 50% 0%, black 50%, transparent 100%);
+        }
+        .glow-primary {
+            box-shadow: 0 0 15px rgba(77, 65, 223, 0.3);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#4f44e2",
+                        "inverse-surface": "#303030",
+                        "on-primary-container": "#fffbff",
+                        "on-secondary-container": "#670023",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#e2dfff",
+                        "surface-container-highest": "#e4e2e1",
+                        "primary-fixed-dim": "#c4c0ff",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1b1c1c",
+                        "surface-variant": "#e4e2e1",
+                        "primary": "#4d41df",
+                        "on-tertiary-fixed": "#17173e",
+                        "surface-dim": "#dcd9d9",
+                        "secondary": "#b0284b",
+                        "on-secondary-fixed": "#400012",
+                        "inverse-on-surface": "#f3f0f0",
+                        "primary-container": "#675df9",
+                        "inverse-primary": "#c4c0ff",
+                        "secondary-container": "#fd6483",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#fffbff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#c3c2f3",
+                        "tertiary-container": "#71709d",
+                        "secondary-fixed": "#ffd9dd",
+                        "secondary-fixed-dim": "#ffb2bc",
+                        "on-tertiary-fixed-variant": "#43436c",
+                        "on-surface-variant": "#464555",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-low": "#f6f3f2",
+                        "primary-fixed": "#e3dfff",
+                        "error-container": "#ffdad6",
+                        "surface": "#fbf9f8",
+                        "on-primary-fixed-variant": "#3622ca",
+                        "surface-container": "#f0eded",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#8f0935",
+                        "outline-variant": "#c7c4d8",
+                        "on-primary-fixed": "#100069",
+                        "background": "#fbf9f8",
+                        "surface-bright": "#fbf9f8",
+                        "outline": "#777587",
+                        "tertiary": "#585883",
+                        "surface-container-high": "#eae8e7",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "gutter": "24px",
+                        "stack-sm": "8px",
+                        "section-gap": "80px",
+                        "margin-desktop": "48px",
+                        "max-width": "1280px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-container-highest/80 backdrop-blur-md border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)] h-20">
+<div class="max-w-[1280px] mx-auto px-margin-desktop flex items-center justify-between h-full">
+<div class="flex items-center gap-stack-lg">
+<span class="font-display-lg text-display-lg text-secondary dark:text-secondary-fixed tracking-tight">ABCD MALL</span>
+<div class="hidden md:flex gap-stack-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="home.html">Home</a>
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1 font-body-md text-body-md" href="Movies.html">Movies</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="FoodCourt.html">Food Court</a>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform">shopping_bag</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform">person</span>
+</div>
+</div>
+</nav>
+<main class="pt-28 pb-section-gap max-w-[1280px] mx-auto px-margin-desktop min-h-screen">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<div class="lg:col-span-8 flex flex-col gap-stack-lg">
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-stack-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Nexus One</h1>
+<div class="flex items-center gap-stack-sm mt-2">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-label-sm uppercase tracking-wider">Sci-Fi Thriller</span>
+<span class="flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span> 8.9 Rating
+                            </span>
+<span class="text-on-surface-variant text-label-sm">•</span>
+<span class="text-on-surface-variant text-label-sm">ABCD Cinema, Mumbai - Hall 4</span>
+</div>
+</div>
+<div class="flex gap-stack-sm">
+<div class="bg-surface-container-high rounded-lg p-2 flex flex-col items-center min-w-[60px]">
+<span class="text-label-sm font-label-sm text-outline uppercase">Dec</span>
+<span class="text-headline-md font-headline-md text-primary">24</span>
+</div>
+<div class="bg-primary text-on-primary rounded-lg p-2 flex flex-col items-center min-w-[80px]">
+<span class="text-label-sm font-label-sm uppercase opacity-80">Time</span>
+<span class="text-headline-md font-headline-md">19:30</span>
+</div>
+</div>
+</header>
+<section class="glass-panel rounded-xl p-stack-lg flex flex-col items-center">
+<div class="w-full max-w-[500px] mb-12 relative">
+<div class="screen-curve shadow-[0_-10px_40px_-10px_rgba(77,65,223,0.4)]"></div>
+<p class="absolute top-4 left-1/2 -translate-x-1/2 text-label-sm font-label-sm text-outline-variant tracking-[0.4em] uppercase">Cinema Screen</p>
+</div>
+<div class="grid grid-cols-10 gap-2 md:gap-3 seat-grid" id="seat-container">
+</div>
+<div class="flex flex-wrap justify-center gap-stack-lg mt-stack-lg border-t border-outline-variant/30 pt-stack-md w-full">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-surface-container-highest border border-outline-variant"></div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Available</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-primary glow-primary"></div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Selected</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-surface-dim opacity-50 relative overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-px h-full bg-outline-variant rotate-45"></div>
+</div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Booked</span>
+</div>
+</div>
+</section>
+</div>
+<aside class="lg:col-span-4">
+<div class="glass-panel rounded-xl p-stack-lg sticky top-28 flex flex-col gap-stack-lg shadow-xl border-primary/10">
+<div class="relative rounded-lg overflow-hidden h-48 w-full group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A futuristic cyberpunk city landscape with towering neon skyscrapers in vibrant shades of purple and pink. Digital advertisements glow intensely on the sides of glass buildings, while a single armored figure in a sleek technological suit stands on a rooftop looking out over the urban horizon. The atmosphere is filled with a soft violet haze and high-tech digital artifacts." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm3kIywYML7_MYX_MoO8U7y_OfBCuNYy53lTG8F-yIb0tt9RDHZkhQ1Vc-8daFF-mW3Ot8RQaeDnRlXp8hxKQ-NbD1TUmk1OemCnPCKS4NV6iVTr5HVBgbyA8nLMCc81hXGkVrhl3v2o0-zBZeCPTDiok0lGl_pYGeDczO2axUTRXBPY_5tt5Lt0nnlR-lCy1n2hyWgRa30YiLLslZZPZ8Glge2xhJWHEllJMXNxHCIPTFAiU6Mer7nT2AJQcz0Oc9NUc9hAk7onkM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<h3 class="font-headline-md text-headline-md text-on-primary">Order Summary</h3>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-body-md font-body-md">Selected Seats</span>
+<span class="font-bold text-primary font-headline-md" id="selected-seats-display">None</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="text-label-sm font-label-sm uppercase tracking-wide">Standard Ticket (x<span id="seat-count">0</span>)</span>
+<span class="font-body-md text-body-md">₹<span id="subtotal">0</span></span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="text-label-sm font-label-sm uppercase tracking-wide">GST (18%)</span>
+<span class="font-body-md text-body-md">₹<span id="tax">0</span></span>
+</div>
+<div class="h-px bg-outline-variant/30 my-4"></div>
+<div class="flex justify-between items-end">
+<span class="font-headline-md text-headline-md text-on-surface">Total Amount</span>
+<span class="font-display-lg text-headline-lg text-secondary">₹<span id="total">0</span></span>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-headline-md text-headline-md py-4 rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed" id="payment-btn">
+                        Continue to Payment
+                    </button>
+<div class="flex items-center gap-stack-sm text-outline text-label-sm font-label-sm justify-center">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+                        Secure transaction powered by MumbaiPay
+                    </div>
+</div>
+</aside>
+</div>
+</main>
+<footer class="bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant">
+<div class="max-w-[1280px] mx-auto px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-1">
+<span class="font-display-lg text-display-lg text-primary dark:text-inverse-primary">ABCD</span>
+<p class="text-on-surface-variant dark:text-surface-variant mt-stack-md font-body-md text-body-md">Experience cinema like never before in the heart of Mumbai.</p>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-primary mb-stack-md">Quick Links</h4>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-all inline-block hover:translate-x-1" href="#">About Us</a></li>
+<li><a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-all inline-block hover:translate-x-1" href="#">Cinemas</a></li>
+<li><a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-all inline-block hover:translate-x-1" href="#">Offers</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-primary mb-stack-md">Support</h4>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-all inline-block hover:translate-x-1" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-all inline-block hover:translate-x-1" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-all inline-block hover:translate-x-1" href="contactFeedback.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-primary mb-stack-md">Newsletter</h4>
+<div class="flex gap-2">
+<input class="bg-surface border border-outline px-4 py-2 rounded-lg w-full outline-none focus:ring-2 focus:ring-primary/50" placeholder="Email" type="email"/>
+<button class="bg-primary text-on-primary p-2 rounded-lg"><span class="material-symbols-outlined">send</span></button>
+</div>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto px-margin-desktop py-8 border-t border-outline-variant/30 text-center text-label-sm font-label-sm text-outline">
+            © 2024 ABCD Mall Mumbai. All Rights Reserved.
+        </div>
+</footer>
+<script>
+        const seatContainer = document.getElementById('seat-container');
+        const selectedDisplay = document.getElementById('selected-seats-display');
+        const seatCountEl = document.getElementById('seat-count');
+        const subtotalEl = document.getElementById('subtotal');
+        const taxEl = document.getElementById('tax');
+        const totalEl = document.getElementById('total');
+        const paymentBtn = document.getElementById('payment-btn');
+
+        const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+        const ticketPrice = 450;
+        let selectedSeats = [];
+
+        // Generate grid
+        for (let i = 0; i < 100; i++) {
+            const rowIdx = Math.floor(i / 10);
+            const colIdx = (i % 10) + 1;
+            const seatId = `${rows[rowIdx]}${colIdx}`;
+            
+            const seat = document.createElement('div');
+            seat.className = `w-7 h-7 md:w-8 md:h-8 rounded cursor-pointer transition-all duration-200 border border-outline-variant flex items-center justify-center text-[8px] font-bold`;
+            
+            // Randomly mark some seats as booked for realism
+            if (Math.random() < 0.2) {
+                seat.className += ' bg-surface-dim opacity-50 cursor-not-allowed booked';
+                seat.innerHTML = '<div class="absolute inset-0 flex items-center justify-center"><div class="w-px h-full bg-outline-variant rotate-45"></div></div>';
+            } else {
+                seat.className += ' bg-surface-container-highest hover:bg-primary-container hover:text-on-primary-container available';
+                seat.innerText = seatId;
+                seat.onclick = () => toggleSeat(seat, seatId);
+            }
+            
+            seatContainer.appendChild(seat);
+        }
+
+        function toggleSeat(seatElement, id) {
+            if (selectedSeats.includes(id)) {
+                selectedSeats = selectedSeats.filter(s => s !== id);
+                seatElement.classList.remove('bg-primary', 'text-on-primary', 'glow-primary', 'scale-110');
+                seatElement.classList.add('bg-surface-container-highest');
+            } else {
+                selectedSeats.push(id);
+                seatElement.classList.remove('bg-surface-container-highest');
+                seatElement.classList.add('bg-primary', 'text-on-primary', 'glow-primary', 'scale-110');
+            }
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const count = selectedSeats.length;
+            const subtotal = count * ticketPrice;
+            const tax = Math.round(subtotal * 0.18);
+            const total = subtotal + tax;
+
+            selectedDisplay.innerText = selectedSeats.length > 0 ? selectedSeats.sort().join(', ') : 'None';
+            seatCountEl.innerText = count;
+            subtotalEl.innerText = subtotal.toLocaleString();
+            taxEl.innerText = tax.toLocaleString();
+            totalEl.innerText = total.toLocaleString();
+
+            paymentBtn.disabled = count === 0;
+            
+            if(count > 0) {
+                paymentBtn.innerHTML = `Pay ₹${total.toLocaleString()}`;
+            } else {
+                paymentBtn.innerHTML = 'Continue to Payment';
+            }
+        }
+
+        updateSummary();
+    </script>
+</body></html>

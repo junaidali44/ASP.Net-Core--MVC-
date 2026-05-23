@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "_AdminLayout";
+}
+<div class="main-content">
+    <div class="top-header">
+        <div class="menu-toggle" onclick="toggleSidebar()"><span class="material-symbols-outlined">menu</span></div>
+        <div class="profile-area"><span class="material-symbols-outlined">notifications</span><span class="material-symbols-outlined">account_circle</span><span>Admin</span></div>
+    </div>
+    <div style="padding: 24px 28px;">
+        <!-- DASHBOARD PANE with Stats & Recent Tables -->
+        <div id="dashboardPane" class="content-pane active">
+            <h2 style="margin-bottom:24px;">Dashboard Overview</h2>
+            <div class="stats-grid" id="statsGrid"></div>
+            <!-- Recent Bookings Table -->
+            <div class="data-table" style="margin-top:20px;">
+                <h3 style="margin-bottom:16px;">📋 Recent Bookings (Last 5)</h3>
+                <table id="recentBookingsTable">
+                    <thead><tr><th>ID</th><th>Customer</th><th>Movie</th><th>Seats</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>
+                    <tbody id="recentBookingsBody"></tbody>
+                </table>
+            </div>
+            <!-- Recent Feedbacks Table -->
+            <div class="data-table" style="margin-top:20px;">
+                <h3 style="margin-bottom:16px;">💬 Latest Feedback</h3>
+                <table><thead><tr><th>Customer</th><th>Rating</th><th>Message</th><th>Date</th></tr></thead><tbody id="latestFeedbackBody"></tbody></table>
+            </div>
+        </div>
+
+        <!-- MANAGE SHOPS PANE -->
+        <div id="shopsPane" class="content-pane">
+            <div class="flex-between"><h2>🛍️ Manage Shops</h2><button class="btn-primary" onclick="openShopModal()">+ Add New Shop</button></div>
+            <input type="text" id="shopSearch" placeholder="Search shops..." class="search-bar">
+            <div class="data-table"><table><thead><tr><th>ID</th><th>Image</th><th>Shop Name</th><th>Category</th><th>Floor</th><th>Status</th><th>Actions</th></tr></thead><tbody id="shopsTableBody"></tbody></table></div>
+        </div>
+
+        <!-- MANAGE MOVIES PANE -->
+        <div id="moviesPane" class="content-pane">
+            <div class="flex-between"><h2>🎬 Manage Movies</h2><button class="btn-primary" onclick="openMovieModal()">+ Add New Movie</button></div>
+            <input type="text" id="movieSearch" placeholder="Search movies..." class="search-bar">
+            <div class="data-table"><table><thead><tr><th>ID</th><th>Poster</th><th>Movie Name</th><th>Language</th><th>Showtime</th><th>Available Seats</th><th>Status</th><th>Actions</th></tr></thead><tbody id="moviesTableBody"></tbody></table></div>
+        </div>
+
+        <!-- FOOD COURT PANE -->
+        <div id="foodcourtPane" class="content-pane">
+            <div class="flex-between"><h2>🍽️ Manage Food Court</h2><button class="btn-primary" onclick="openFoodModal()">+ Add Outlet</button></div>
+            <input type="text" id="foodSearch" placeholder="Search outlets..." class="search-bar">
+            <div class="data-table"><table><thead><tr><th>ID</th><th>Logo</th><th>Outlet Name</th><th>Cuisine</th><th>Floor</th><th>Timings</th><th>Actions</th></tr></thead><tbody id="foodTableBody"></tbody></table></div>
+        </div>
+
+        <!-- GALLERY, FEEDBACK, BOOKINGS, SETTINGS (simplified but functional) -->
+        <div id="galleryPane" class="content-pane"><h2>📸 Gallery Manager</h2><button class="btn-primary" onclick="alert('Upload demo')">+ Upload Image</button><div class="data-table" style="margin-top:20px;"><p>Gallery images will appear here (demo).</p></div></div>
+        <div id="feedbackPane" class="content-pane"><h2>💬 Customer Feedback</h2><div class="data-table" id="feedbackList"></div></div>
+        <div id="bookingsPane" class="content-pane"><h2>📅 All Bookings</h2><div class="data-table"><table><thead><tr><th>ID</th><th>Customer</th><th>Movie</th><th>Seats</th><th>Amount</th><th>Date</th></tr></thead><tbody id="allBookingsBody"></tbody></table></div></div>
+        <div id="settingsPane" class="content-pane"><h2>⚙️ Settings</h2><div class="data-table"><p>Mall settings, profile updates (demo).</p></div></div>
+    </div>
+</div>

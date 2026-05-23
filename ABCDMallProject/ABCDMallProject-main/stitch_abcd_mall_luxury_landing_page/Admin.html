@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ABCD Mall | Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F1F5F9;
+            color: #1E293B;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .logo-text, .sidebar-item, .btn {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Login Styles */
+        .login-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .login-card {
+            max-width: 420px;
+            width: 100%;
+            background: rgba(255,255,255,0.98);
+            border-radius: 32px;
+            padding: 40px 32px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .mall-logo {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .mall-logo span {
+            font-size: 52px;
+            background: linear-gradient(135deg, #6C63FF, #FF6584);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .input-group span {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94A3B8;
+            font-size: 20px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 14px 16px 14px 48px;
+            border: 1.5px solid #E2E8F0;
+            border-radius: 28px;
+            font-size: 15px;
+            outline: none;
+        }
+        .input-group input:focus {
+            border-color: #6C63FF;
+        }
+        .password-toggle {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #94A3B8;
+        }
+        .btn-login {
+            width: 100%;
+            background: linear-gradient(135deg, #6C63FF, #FF6584);
+            border: none;
+            padding: 14px;
+            border-radius: 40px;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+        .btn-login:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(108,99,255,0.3); }
+
+        /* Dashboard Layout */
+        .dashboard {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 260px;
+            background: #0F172A;
+            color: #CBD5E1;
+            transition: all 0.3s;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+        .sidebar-header {
+            padding: 24px 20px;
+            border-bottom: 1px solid #1E293B;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 20px;
+            margin: 4px 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #CBD5E1;
+        }
+        .sidebar-item:hover, .sidebar-item.active {
+            background: #1E293B;
+            color: white;
+        }
+        .sidebar-item span:first-child { font-size: 24px; }
+        .main-content {
+            flex: 1;
+            margin-left: 260px;
+            transition: 0.3s;
+        }
+        .top-header {
+            background: white;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+        .menu-toggle {
+            cursor: pointer;
+            font-size: 28px;
+            display: none;
+        }
+        .profile-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        /* Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        .stat-card {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        /* Tables */
+        .data-table {
+            background: white;
+            border-radius: 24px;
+            overflow-x: auto;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 14px 12px;
+            text-align: left;
+            border-bottom: 1px solid #E2E8F0;
+        }
+        th {
+            background: #F8FAFC;
+            font-weight: 600;
+        }
+        .action-icons {
+            display: flex;
+            gap: 12px;
+            cursor: pointer;
+        }
+        .action-icons span {
+            font-size: 20px;
+            transition: 0.2s;
+        }
+        .action-icons span:hover { opacity: 0.7; }
+        .btn-primary {
+            background: linear-gradient(135deg, #6C63FF, #FF6584);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            padding: 10px 16px;
+            border: 1px solid #E2E8F0;
+            border-radius: 40px;
+            width: 250px;
+            margin-bottom: 20px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 32px;
+            max-width: 650px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 28px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #E2E8F0;
+            border-radius: 16px;
+        }
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .status-active { background: #DCFCE7; color: #166534; }
+        .status-inactive { background: #FEE2E2; color: #991B1B; }
+        .content-pane { display: none; }
+        .content-pane.active { display: block; }
+        @media (max-width: 768px) {
+            .sidebar { transform: translateX(-100%); position: fixed; }
+            .sidebar.mobile-open { transform: translateX(0); }
+            .main-content { margin-left: 0 !important; }
+            .menu-toggle { display: block; }
+        }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <!-- LOGIN PAGE -->
+    <div id="loginPage" class="login-container">
+        <div class="login-card">
+            <div class="mall-logo"><span class="material-symbols-outlined" style="font-size: 64px;">shopping_bag</span><h2 style="margin-top: 8px;">ABCD MALL</h2></div>
+            <h3 style="text-align:center; margin-bottom:24px;">Admin Portal</h3>
+            <div class="input-group"><span class="material-symbols-outlined">person</span><input type="text" id="username" placeholder="Username" value="admin"></div>
+            <div class="input-group"><span class="material-symbols-outlined">lock</span><input type="password" id="password" placeholder="Password" value="admin123"><span class="material-symbols-outlined password-toggle" onclick="togglePassword()">visibility</span></div>
+            <div class="checkbox-group" style="display:flex; justify-content:space-between; margin-bottom:24px;"><label><input type="checkbox"> Remember Me</label><a href="#" style="color:#6C63FF;">Forgot Password?</a></div>
+            <button class="btn-login" onclick="handleLogin()">Login to Dashboard</button>
+        </div>
+    </div>
+
+    <!-- DASHBOARD APP -->
+    <div id="dashboardApp" style="display:none;">
+        <div class="dashboard">
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header"><span class="material-symbols-outlined">shopping_bag</span><span class="logo-text" style="font-weight:800;">ABCD Admin</span></div>
+                <div class="sidebar-menu">
+                    <div class="sidebar-item active" data-page="dashboard"><span class="material-symbols-outlined">dashboard</span><span>Dashboard</span></div>
+                    <div class="sidebar-item" data-page="shops"><span class="material-symbols-outlined">storefront</span><span>Manage Shops</span></div>
+                    <div class="sidebar-item" data-page="movies"><span class="material-symbols-outlined">movie</span><span>Manage Movies</span></div>
+                    <div class="sidebar-item" data-page="foodcourt"><span class="material-symbols-outlined">restaurant</span><span>Food Court</span></div>
+                    <div class="sidebar-item" data-page="gallery"><span class="material-symbols-outlined">photo_library</span><span>Gallery</span></div>
+                    <div class="sidebar-item" data-page="feedback"><span class="material-symbols-outlined">chat</span><span>Feedback</span></div>
+                    <div class="sidebar-item" data-page="bookings"><span class="material-symbols-outlined">receipt</span><span>Bookings</span></div>
+                    <div class="sidebar-item" data-page="settings"><span class="material-symbols-outlined">settings</span><span>Settings</span></div>
+                    <div class="sidebar-item" onclick="logout()"><span class="material-symbols-outlined">logout</span><span>Logout</span></div>
+                </div>
+            </aside>
+            <div class="main-content">
+                <div class="top-header">
+                    <div class="menu-toggle" onclick="toggleSidebar()"><span class="material-symbols-outlined">menu</span></div>
+                    <div class="profile-area"><span class="material-symbols-outlined">notifications</span><span class="material-symbols-outlined">account_circle</span><span>Admin</span></div>
+                </div>
+                <div style="padding: 24px 28px;">
+                    <!-- DASHBOARD PANE with Stats & Recent Tables -->
+                    <div id="dashboardPane" class="content-pane active">
+                        <h2 style="margin-bottom:24px;">Dashboard Overview</h2>
+                        <div class="stats-grid" id="statsGrid"></div>
+                        <!-- Recent Bookings Table -->
+                        <div class="data-table" style="margin-top:20px;">
+                            <h3 style="margin-bottom:16px;">📋 Recent Bookings (Last 5)</h3>
+                            <table id="recentBookingsTable">
+                                <thead><tr><th>ID</th><th>Customer</th><th>Movie</th><th>Seats</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>
+                                <tbody id="recentBookingsBody"></tbody>
+                            </table>
+                        </div>
+                        <!-- Recent Feedbacks Table -->
+                        <div class="data-table" style="margin-top:20px;">
+                            <h3 style="margin-bottom:16px;">💬 Latest Feedback</h3>
+                            <table><thead><tr><th>Customer</th><th>Rating</th><th>Message</th><th>Date</th></tr></thead><tbody id="latestFeedbackBody"></tbody></table>
+                        </div>
+                    </div>
+
+                    <!-- MANAGE SHOPS PANE -->
+                    <div id="shopsPane" class="content-pane">
+                        <div class="flex-between"><h2>🛍️ Manage Shops</h2><button class="btn-primary" onclick="openShopModal()">+ Add New Shop</button></div>
+                        <input type="text" id="shopSearch" placeholder="Search shops..." class="search-bar">
+                        <div class="data-table"><table><thead><tr><th>ID</th><th>Image</th><th>Shop Name</th><th>Category</th><th>Floor</th><th>Status</th><th>Actions</th></tr></thead><tbody id="shopsTableBody"></tbody></table></div>
+                    </div>
+
+                    <!-- MANAGE MOVIES PANE -->
+                    <div id="moviesPane" class="content-pane">
+                        <div class="flex-between"><h2>🎬 Manage Movies</h2><button class="btn-primary" onclick="openMovieModal()">+ Add New Movie</button></div>
+                        <input type="text" id="movieSearch" placeholder="Search movies..." class="search-bar">
+                        <div class="data-table"><table><thead><tr><th>ID</th><th>Poster</th><th>Movie Name</th><th>Language</th><th>Showtime</th><th>Available Seats</th><th>Status</th><th>Actions</th></tr></thead><tbody id="moviesTableBody"></tbody></table></div>
+                    </div>
+
+                    <!-- FOOD COURT PANE -->
+                    <div id="foodcourtPane" class="content-pane">
+                        <div class="flex-between"><h2>🍽️ Manage Food Court</h2><button class="btn-primary" onclick="openFoodModal()">+ Add Outlet</button></div>
+                        <input type="text" id="foodSearch" placeholder="Search outlets..." class="search-bar">
+                        <div class="data-table"><table><thead><tr><th>ID</th><th>Logo</th><th>Outlet Name</th><th>Cuisine</th><th>Floor</th><th>Timings</th><th>Actions</th></tr></thead><tbody id="foodTableBody"></tbody></table></div>
+                    </div>
+
+                    <!-- GALLERY, FEEDBACK, BOOKINGS, SETTINGS (simplified but functional) -->
+                    <div id="galleryPane" class="content-pane"><h2>📸 Gallery Manager</h2><button class="btn-primary" onclick="alert('Upload demo')">+ Upload Image</button><div class="data-table" style="margin-top:20px;"><p>Gallery images will appear here (demo).</p></div></div>
+                    <div id="feedbackPane" class="content-pane"><h2>💬 Customer Feedback</h2><div class="data-table" id="feedbackList"></div></div>
+                    <div id="bookingsPane" class="content-pane"><h2>📅 All Bookings</h2><div class="data-table"><table><thead><tr><th>ID</th><th>Customer</th><th>Movie</th><th>Seats</th><th>Amount</th><th>Date</th></tr></thead><tbody id="allBookingsBody"></tbody></table></div></div>
+                    <div id="settingsPane" class="content-pane"><h2>⚙️ Settings</h2><div class="data-table"><p>Mall settings, profile updates (demo).</p></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALS -->
+    <div id="shopModal" class="modal"><div class="modal-content"><h3>Add / Edit Shop</h3><div class="form-group"><label>Shop Name</label><input id="shopName"></div><div class="form-group"><label>Category</label><input id="shopCategory"></div><div class="form-group"><label>Floor</label><input id="shopFloor"></div><div class="form-group"><label>Image URL</label><input id="shopImage" placeholder="https://..."></div><div class="form-group"><label>Status</label><select id="shopStatus"><option value="active">Active</option><option value="inactive">Inactive</option></select></div><div style="display:flex; gap:12px; justify-content:end;"><button class="btn-primary" onclick="saveShop()">Save</button><button onclick="closeModal('shopModal')">Cancel</button></div></div></div>
+    <div id="movieModal" class="modal"><div class="modal-content"><h3>Add / Edit Movie</h3><div class="form-group"><label>Movie Name</label><input id="movieName"></div><div class="form-group"><label>Language</label><input id="movieLang"></div><div class="form-group"><label>Showtime</label><input id="movieShowtime" placeholder="7:00 PM"></div><div class="form-group"><label>Total Seats</label><input id="movieSeats" type="number"></div><div class="form-group"><label>Poster URL</label><input id="moviePoster"></div><div class="form-group"><label>Status</label><select id="movieStatus"><option value="Now Showing">Now Showing</option><option value="Coming Soon">Coming Soon</option></select></div><div style="display:flex; gap:12px;"><button class="btn-primary" onclick="saveMovie()">Save</button><button onclick="closeModal('movieModal')">Cancel</button></div></div></div>
+    <div id="foodModal" class="modal"><div class="modal-content"><h3>Add / Edit Food Outlet</h3><div class="form-group"><label>Outlet Name</label><input id="foodName"></div><div class="form-group"><label>Cuisine</label><input id="foodCuisine"></div><div class="form-group"><label>Floor</label><input id="foodFloor"></div><div class="form-group"><label>Timings</label><input id="foodTimings" placeholder="11AM - 11PM"></div><div class="form-group"><label>Logo URL</label><input id="foodLogo"></div><div style="display:flex; gap:12px;"><button class="btn-primary" onclick="saveFood()">Save</button><button onclick="closeModal('foodModal')">Cancel</button></div></div></div>
+
+    <script>
+        // ---------- MOCK DATABASES (8 records each for demo) ----------
+        let shops = [
+            { id:1, name:"Aurelius Luxury", category:"Fashion", floor:"Level 2", image:"https://randomuser.me/api/portraits/women/68.jpg", status:"active" },
+            { id:2, name:"Eclat Beauty", category:"Cosmetics", floor:"Level 1", image:"https://randomuser.me/api/portraits/women/44.jpg", status:"active" },
+            { id:3, name:"Chronos Hub", category:"Watches", floor:"Level 3", image:"https://randomuser.me/api/portraits/men/32.jpg", status:"active" },
+            { id:4, name:"Zenith Tech", category:"Electronics", floor:"Level 1", image:"https://randomuser.me/api/portraits/men/22.jpg", status:"inactive" },
+            { id:5, name:"Silk Route", category:"Home Decor", floor:"Level 4", image:"https://randomuser.me/api/portraits/women/90.jpg", status:"active" },
+            { id:6, name:"Velvet Wine", category:"Bar", floor:"Level 5", image:"https://randomuser.me/api/portraits/men/45.jpg", status:"active" },
+            { id:7, name:"Prestige Auto", category:"Luxury Cars", floor:"Ground", image:"https://randomuser.me/api/portraits/women/33.jpg", status:"inactive" },
+            { id:8, name:"The Book Nook", category:"Books", floor:"Level 2", image:"https://randomuser.me/api/portraits/women/12.jpg", status:"active" }
+        ];
+        let movies = [
+            { id:1, name:"The Neon Legacy", lang:"English", showtime:"7:00 PM", seats:120, status:"Now Showing", poster:"https://picsum.photos/id/100/80/120" },
+            { id:2, name:"Shadows of Mumbai", lang:"Hindi", showtime:"9:30 PM", seats:85, status:"Now Showing", poster:"https://picsum.photos/id/101/80/120" },
+            { id:3, name:"Skyward Flight", lang:"English", showtime:"4:00 PM", seats:45, status:"Now Showing", poster:"https://picsum.photos/id/102/80/120" },
+            { id:4, name:"Mystic River", lang:"Tamil", showtime:"12:30 PM", seats:60, status:"Coming Soon", poster:"https://picsum.photos/id/103/80/120" },
+            { id:5, name:"Warrior's Creed", lang:"Hindi", showtime:"10:00 PM", seats:95, status:"Now Showing", poster:"https://picsum.photos/id/104/80/120" },
+            { id:6, name:"Love in Tokyo", lang:"Japanese", showtime:"6:15 PM", seats:30, status:"Coming Soon", poster:"https://picsum.photos/id/105/80/120" },
+            { id:7, name:"Chase & Run", lang:"English", showtime:"11:00 AM", seats:50, status:"Now Showing", poster:"https://picsum.photos/id/106/80/120" },
+            { id:8, name:"After Hours", lang:"French", showtime:"8:45 PM", seats:20, status:"Now Showing", poster:"https://picsum.photos/id/107/80/120" }
+        ];
+        let foodOutlets = [
+            { id:1, name:"Spice Route", cuisine:"Indian", floor:"L3", timings:"11AM-11PM", logo:"https://randomuser.me/api/portraits/men/1.jpg" },
+            { id:2, name:"Sushi Zen", cuisine:"Japanese", floor:"L2", timings:"12PM-10PM", logo:"https://randomuser.me/api/portraits/women/2.jpg" },
+            { id:3, name:"Burger Hub", cuisine:"American", floor:"L1", timings:"10AM-12AM", logo:"https://randomuser.me/api/portraits/men/3.jpg" },
+            { id:4, name:"Gelato Dream", cuisine:"Desserts", floor:"L4", timings:"12PM-9PM", logo:"https://randomuser.me/api/portraits/women/4.jpg" },
+            { id:5, name:"Pasta La Vista", cuisine:"Italian", floor:"L3", timings:"11AM-10:30PM", logo:"https://randomuser.me/api/portraits/men/5.jpg" },
+            { id:6, name:"Wok & Roll", cuisine:"Chinese", floor:"L2", timings:"12PM-11PM", logo:"https://randomuser.me/api/portraits/women/6.jpg" },
+            { id:7, name:"Mediterra", cuisine:"Mediterranean", floor:"L5", timings:"1PM-10PM", logo:"https://randomuser.me/api/portraits/men/7.jpg" },
+            { id:8, name:"Coffee O'Clock", cuisine:"Cafe", floor:"Ground", timings:"8AM-11PM", logo:"https://randomuser.me/api/portraits/women/8.jpg" }
+        ];
+        let bookings = [
+            { id:"BK001", customer:"Riya Sharma", movie:"The Neon Legacy", seats:2, amount:700, status:"Confirmed", date:"2025-05-22" },
+            { id:"BK002", customer:"Amit Patel", movie:"Skyward Flight", seats:4, amount:1280, status:"Confirmed", date:"2025-05-22" },
+            { id:"BK003", customer:"Neha Verma", movie:"Shadows of Mumbai", seats:1, amount:280, status:"Pending", date:"2025-05-21" },
+            { id:"BK004", customer:"Karan Mehta", movie:"The Neon Legacy", seats:3, amount:1050, status:"Confirmed", date:"2025-05-21" },
+            { id:"BK005", customer:"Sneha Reddy", movie:"Warrior's Creed", seats:2, amount:560, status:"Cancelled", date:"2025-05-20" }
+        ];
+        let feedbacks = [
+            { id:1, name:"Rahul K.", rating:5, message:"Amazing luxury experience!", date:"2025-05-22" },
+            { id:2, name:"Priya S.", rating:4, message:"Great food court variety", date:"2025-05-21" },
+            { id:3, name:"Anjali M.", rating:5, message:"Best mall in Mumbai", date:"2025-05-20" },
+            { id:4, name:"Vikram R.", rating:3, message:"Parking could improve", date:"2025-05-19" },
+            { id:5, name:"Sonal D.", rating:5, message:"Loved the cinema!", date:"2025-05-18" }
+        ];
+
+        // Helper: render functions
+        function renderDashboardStats() {
+            document.getElementById('statsGrid').innerHTML = `
+                <div class="stat-card"><h3>Total Shops</h3><div style="font-size:36px; font-weight:800;">${shops.length}</div><span>+2 this month</span></div>
+                <div class="stat-card"><h3>Movies</h3><div style="font-size:36px;">${movies.length}</div><span>${movies.filter(m=>m.status==='Now Showing').length} now showing</span></div>
+                <div class="stat-card"><h3>Food Outlets</h3><div style="font-size:36px;">${foodOutlets.length}</div></div>
+                <div class="stat-card"><h3>Today's Bookings</h3><div style="font-size:36px;">${bookings.filter(b=>b.date==='2025-05-22').length}</div><span>₹${bookings.filter(b=>b.date==='2025-05-22').reduce((s,b)=>s+parseInt(b.amount),0)} revenue</span></div>
+            `;
+            const recentBody = document.getElementById('recentBookingsBody');
+            recentBody.innerHTML = bookings.slice(0,5).map(b => `<tr><td>${b.id}</td><td>${b.customer}</td><td>${b.movie}</td><td>${b.seats}</td><td>₹${b.amount}</td><td><span class="status-badge ${b.status==='Confirmed'?'status-active':b.status==='Pending'?'status-pending':'status-inactive'}">${b.status}</span></td><td>${b.date}</td></tr>`).join('');
+            document.getElementById('latestFeedbackBody').innerHTML = feedbacks.slice(0,5).map(f => `<tr><td>${f.name}</td><td>⭐${f.rating}</td><td>${f.message.substring(0,50)}</td><td>${f.date}</td></tr>`).join('');
+        }
+        function renderShopsTable() { const search = document.getElementById('shopSearch')?.value.toLowerCase()||''; const filtered = shops.filter(s=>s.name.toLowerCase().includes(search)); document.getElementById('shopsTableBody').innerHTML = filtered.map(s => `<tr><td>${s.id}</td><td><img src="${s.image}" width="45" height="45" style="border-radius:12px; object-fit:cover;"></td><td>${s.name}</td><td>${s.category}</td><td>${s.floor}</td><td><span class="status-badge ${s.status==='active'?'status-active':'status-inactive'}">${s.status}</span></td><td><div class="action-icons"><span class="material-symbols-outlined" onclick="editShop(${s.id})">edit</span><span class="material-symbols-outlined" onclick="deleteShop(${s.id})">delete</span></div></td></tr>`).join(''); }
+        function renderMoviesTable() { const search = document.getElementById('movieSearch')?.value.toLowerCase()||''; const filtered = movies.filter(m=>m.name.toLowerCase().includes(search)); document.getElementById('moviesTableBody').innerHTML = filtered.map(m => `<tr><td>${m.id}</td><td><img src="${m.poster}" width="40" height="60" style="object-fit:cover; border-radius:8px;"></td><td>${m.name}</td><td>${m.lang}</td><td>${m.showtime}</td><td>${m.seats}</td><td><span class="status-badge status-active">${m.status}</span></td><td><div class="action-icons"><span class="material-symbols-outlined" onclick="editMovie(${m.id})">edit</span><span class="material-symbols-outlined" onclick="deleteMovie(${m.id})">delete</span></div></td></tr>`).join(''); }
+        function renderFoodTable() { const search = document.getElementById('foodSearch')?.value.toLowerCase()||''; const filtered = foodOutlets.filter(f=>f.name.toLowerCase().includes(search)); document.getElementById('foodTableBody').innerHTML = filtered.map(f => `<tr><td>${f.id}</td><td><img src="${f.logo}" width="45" height="45" style="border-radius:50%; object-fit:cover;"></td><td>${f.name}</td><td>${f.cuisine}</td><td>${f.floor}</td><td>${f.timings}</td><td><div class="action-icons"><span class="material-symbols-outlined" onclick="editFood(${f.id})">edit</span><span class="material-symbols-outlined" onclick="deleteFood(${f.id})">delete</span></div></td></tr>`).join(''); }
+        function renderAllBookings() { document.getElementById('allBookingsBody').innerHTML = bookings.map(b => `<tr><td>${b.id}</td><td>${b.customer}</td><td>${b.movie}</td><td>${b.seats}</td><td>₹${b.amount}</td><td>${b.date}</td></tr>`).join(''); }
+        function renderFeedbackList() { document.getElementById('feedbackList').innerHTML = `<table><thead><tr><th>Customer</th><th>Rating</th><th>Message</th><th>Date</th></tr></thead><tbody>${feedbacks.map(f=>`<tr><td>${f.name}</td><td>⭐${f.rating}</td><td>${f.message}</td><td>${f.date}</td></tr>`).join('')}</tbody></table>`; }
+
+        // CRUD Shops
+        let currentShopId = null;
+        function openShopModal(shop=null) { if(shop) { currentShopId=shop.id; document.getElementById('shopName').value=shop.name; document.getElementById('shopCategory').value=shop.category; document.getElementById('shopFloor').value=shop.floor; document.getElementById('shopImage').value=shop.image; document.getElementById('shopStatus').value=shop.status; } else { currentShopId=null; document.getElementById('shopName').value=''; document.getElementById('shopCategory').value=''; document.getElementById('shopFloor').value=''; document.getElementById('shopImage').value=''; document.getElementById('shopStatus').value='active'; } document.getElementById('shopModal').style.display='flex'; }
+        function saveShop() { let newShop = { id: currentShopId || Date.now(), name:document.getElementById('shopName').value, category:document.getElementById('shopCategory').value, floor:document.getElementById('shopFloor').value, image:document.getElementById('shopImage').value||'https://randomuser.me/api/portraits/lego/1.jpg', status:document.getElementById('shopStatus').value }; if(currentShopId) { let index = shops.findIndex(s=>s.id===currentShopId); if(index!==-1) shops[index]=newShop; } else { shops.push(newShop); } closeModal('shopModal'); renderShopsTable(); renderDashboardStats(); }
+        function editShop(id) { let shop = shops.find(s=>s.id===id); if(shop) openShopModal(shop); }
+        function deleteShop(id) { if(confirm('Delete shop?')) { shops = shops.filter(s=>s.id!==id); renderShopsTable(); renderDashboardStats(); } }
+        // Movies CRUD
+        let currentMovieId = null;
+        function openMovieModal(movie=null) { if(movie) { currentMovieId=movie.id; document.getElementById('movieName').value=movie.name; document.getElementById('movieLang').value=movie.lang; document.getElementById('movieShowtime').value=movie.showtime; document.getElementById('movieSeats').value=movie.seats; document.getElementById('moviePoster').value=movie.poster; document.getElementById('movieStatus').value=movie.status; } else { currentMovieId=null; document.getElementById('movieName').value=''; document.getElementById('movieLang').value=''; document.getElementById('movieShowtime').value=''; document.getElementById('movieSeats').value=''; document.getElementById('moviePoster').value=''; document.getElementById('movieStatus').value='Now Showing'; } document.getElementById('movieModal').style.display='flex'; }
+        function saveMovie() { let newMovie = { id: currentMovieId || Date.now(), name:document.getElementById('movieName').value, lang:document.getElementById('movieLang').value, showtime:document.getElementById('movieShowtime').value, seats:parseInt(document.getElementById('movieSeats').value)||100, poster:document.getElementById('moviePoster').value||'https://picsum.photos/id/108/80/120', status:document.getElementById('movieStatus').value }; if(currentMovieId) { let idx=movies.findIndex(m=>m.id===currentMovieId); if(idx!==-1) movies[idx]=newMovie; } else movies.push(newMovie); closeModal('movieModal'); renderMoviesTable(); renderDashboardStats(); }
+        function editMovie(id) { let movie = movies.find(m=>m.id===id); if(movie) openMovieModal(movie); }
+        function deleteMovie(id) { if(confirm('Delete movie?')) { movies = movies.filter(m=>m.id!==id); renderMoviesTable(); renderDashboardStats(); } }
+        // Food CRUD
+        let currentFoodId = null;
+        function openFoodModal(food=null) { if(food) { currentFoodId=food.id; document.getElementById('foodName').value=food.name; document.getElementById('foodCuisine').value=food.cuisine; document.getElementById('foodFloor').value=food.floor; document.getElementById('foodTimings').value=food.timings; document.getElementById('foodLogo').value=food.logo; } else { currentFoodId=null; document.getElementById('foodName').value=''; document.getElementById('foodCuisine').value=''; document.getElementById('foodFloor').value=''; document.getElementById('foodTimings').value=''; document.getElementById('foodLogo').value=''; } document.getElementById('foodModal').style.display='flex'; }
+        function saveFood() { let newFood = { id: currentFoodId || Date.now(), name:document.getElementById('foodName').value, cuisine:document.getElementById('foodCuisine').value, floor:document.getElementById('foodFloor').value, timings:document.getElementById('foodTimings').value, logo:document.getElementById('foodLogo').value||'https://randomuser.me/api/portraits/lego/2.jpg' }; if(currentFoodId) { let idx=foodOutlets.findIndex(f=>f.id===currentFoodId); if(idx!==-1) foodOutlets[idx]=newFood; } else foodOutlets.push(newFood); closeModal('foodModal'); renderFoodTable(); renderDashboardStats(); }
+        function editFood(id) { let f = foodOutlets.find(f=>f.id===id); if(f) openFoodModal(f); }
+        function deleteFood(id) { if(confirm('Delete outlet?')) { foodOutlets = foodOutlets.filter(f=>f.id!==id); renderFoodTable(); renderDashboardStats(); } }
+
+        // Navigation & UI
+        function setActivePage(page) { document.querySelectorAll('.content-pane').forEach(p=>p.classList.remove('active')); document.getElementById(`${page}Pane`).classList.add('active'); document.querySelectorAll('.sidebar-item').forEach(i=>i.classList.remove('active')); document.querySelector(`.sidebar-item[data-page="${page}"]`).classList.add('active'); if(page==='dashboard') { renderDashboardStats(); renderAllBookings(); renderFeedbackList(); } if(page==='shops') renderShopsTable(); if(page==='movies') renderMoviesTable(); if(page==='foodcourt') renderFoodTable(); if(page==='bookings') renderAllBookings(); if(page==='feedback') renderFeedbackList(); if(page==='gallery'){} if(page==='settings'){} }
+        document.querySelectorAll('.sidebar-item[data-page]').forEach(el=>el.addEventListener('click',()=>setActivePage(el.getAttribute('data-page'))));
+        function handleLogin() { let u=document.getElementById('username').value; let p=document.getElementById('password').value; if(u && p) { document.getElementById('loginPage').style.display='none'; document.getElementById('dashboardApp').style.display='block'; renderDashboardStats(); renderShopsTable(); renderMoviesTable(); renderFoodTable(); renderAllBookings(); renderFeedbackList(); } else alert('Enter credentials'); }
+        function logout() { document.getElementById('loginPage').style.display='flex'; document.getElementById('dashboardApp').style.display='none'; }
+        function togglePassword() { let pwd=document.getElementById('password'); pwd.type = pwd.type==='password'?'text':'password'; }
+        function toggleSidebar() { document.getElementById('sidebar').classList.toggle('mobile-open'); }
+        function closeModal(id) { document.getElementById(id).style.display='none'; }
+        window.onclick = function(e) { if(e.target.classList.contains('modal')) e.target.style.display='none'; }
+        document.getElementById('shopSearch')?.addEventListener('keyup',()=>renderShopsTable());
+        document.getElementById('movieSearch')?.addEventListener('keyup',()=>renderMoviesTable());
+        document.getElementById('foodSearch')?.addEventListener('keyup',()=>renderFoodTable());
+        setActivePage('dashboard');
+    </script>
+</body>
+</html>

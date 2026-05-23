@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>All Stores | ABCD Mall Mumbai</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#f0eded",
+                        "tertiary-fixed": "#e2dfff",
+                        "primary-fixed-dim": "#c4c0ff",
+                        "on-surface": "#1b1c1c",
+                        "on-background": "#1b1c1c",
+                        "surface-container-highest": "#e4e2e1",
+                        "inverse-surface": "#303030",
+                        "surface-container-low": "#f6f3f2",
+                        "on-primary-fixed-variant": "#3622ca",
+                        "secondary-fixed": "#ffd9dd",
+                        "on-tertiary-fixed": "#17173e",
+                        "tertiary": "#585883",
+                        "surface-variant": "#e4e2e1",
+                        "surface-dim": "#dcd9d9",
+                        "inverse-on-surface": "#f3f0f0",
+                        "on-primary-container": "#fffbff",
+                        "secondary-fixed-dim": "#ffb2bc",
+                        "outline": "#777587",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fbf9f8",
+                        "on-tertiary-fixed-variant": "#43436c",
+                        "on-secondary-fixed-variant": "#8f0935",
+                        "surface-tint": "#4f44e2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#464555",
+                        "inverse-primary": "#c4c0ff",
+                        "outline-variant": "#c7c4d8",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f8",
+                        "on-primary-fixed": "#100069",
+                        "tertiary-fixed-dim": "#c3c2f3",
+                        "primary": "#4d41df",
+                        "secondary-container": "#fd6483",
+                        "primary-fixed": "#e3dfff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fbf9f8",
+                        "primary-container": "#675df9",
+                        "surface-container-high": "#eae8e7",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary": "#b0284b",
+                        "on-secondary-container": "#670023",
+                        "on-secondary-fixed": "#400012",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#71709d",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "stack-md": "16px",
+                        "margin-desktop": "48px",
+                        "max-width": "1280px",
+                        "section-gap": "80px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .luxury-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s ease;
+        }
+        .luxury-shadow-hover:hover {
+            box-shadow: 0 25px 50px -12px rgba(77, 65, 223, 0.15);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* New Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal {
+            animation: fadeIn 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .skeleton {
+            background: linear-gradient(90deg, #f0eded 25%, #e4e2e1 50%, #f0eded 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        .heart-active {
+            color: #b0284b !important;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-primary-fixed selection:text-primary overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-container-highest/80 backdrop-blur-md border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)] h-20">
+<div class="max-w-[1280px] mx-auto px-margin-desktop flex items-center justify-between h-full">
+<a class="font-display-lg text-display-lg text-secondary dark:text-secondary-fixed tracking-tight hover:scale-105 transition-transform duration-300 ease-out" href="#">
+            ABCD MALL
+        </a>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="home.html">Home</a>
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1 font-body-md text-body-md" href="shop.html">Shops</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="FoodCourt.html">Food Court</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="Movies.html">Movies</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="contactFeedback.html">Contact</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group cursor-pointer hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined text-primary" data-icon="shopping_bag">shopping_bag</span>
+<span class="absolute -top-2 -right-2 bg-secondary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
+</div>
+<div class="cursor-pointer hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined text-primary" data-icon="person">person</span>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-section-gap max-w-[1280px] mx-auto px-margin-desktop">
+<!-- Page Title & Header -->
+<header class="mb-stack-lg reveal">
+<h1 class="font-headline-lg text-headline-lg mb-2">🛍️ All Stores at ABCD Mall</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Discover 50+ premium brands under one roof</p>
+</header>
+<div class="flex flex-col md:flex-row gap-gutter">
+<!-- Left Sidebar (Filters) -->
+<aside class="w-full md:w-80 shrink-0">
+<div class="sticky top-28 space-y-stack-lg p-6 bg-surface-container-low rounded-xl luxury-shadow border border-outline-variant/30 transition-all duration-300">
+<!-- Search Box -->
+<div class="space-y-stack-sm">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Search</label>
+<div class="relative">
+<input class="w-full pl-10 pr-4 py-3 bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="Search by shop name..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+</div>
+</div>
+<!-- Category Filter -->
+<div class="space-y-stack-sm">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Category</label>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group hover:bg-white/50 p-2 rounded-lg transition-colors">
+<input checked="" class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary transition-all group-hover:border-primary" type="checkbox"/>
+<span class="text-body-md group-hover:text-primary transition-colors">Fashion</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group hover:bg-white/50 p-2 rounded-lg transition-colors">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary transition-all group-hover:border-primary" type="checkbox"/>
+<span class="text-body-md group-hover:text-primary transition-colors">Electronics</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group hover:bg-white/50 p-2 rounded-lg transition-colors">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary transition-all group-hover:border-primary" type="checkbox"/>
+<span class="text-body-md group-hover:text-primary transition-colors">Jewelry</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group hover:bg-white/50 p-2 rounded-lg transition-colors">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary transition-all group-hover:border-primary" type="checkbox"/>
+<span class="text-body-md group-hover:text-primary transition-colors">Beauty &amp; Wellness</span>
+</label>
+</div>
+</div>
+<!-- Floor Filter -->
+<div class="space-y-stack-sm">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Floor</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="px-4 py-2 text-label-sm bg-primary text-white rounded-lg active:scale-95 transition-transform">Ground</button>
+<button class="px-4 py-2 text-label-sm bg-white border border-outline-variant rounded-lg hover:bg-primary-fixed-dim hover:border-primary/30 transition-all active:scale-95">Floor 1</button>
+<button class="px-4 py-2 text-label-sm bg-white border border-outline-variant rounded-lg hover:bg-primary-fixed-dim hover:border-primary/30 transition-all active:scale-95">Floor 2</button>
+<button class="px-4 py-2 text-label-sm bg-white border border-outline-variant rounded-lg hover:bg-primary-fixed-dim hover:border-primary/30 transition-all active:scale-95">Floor 3</button>
+</div>
+</div>
+<!-- Price Range -->
+<div class="space-y-stack-sm">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Price Range</label>
+<input class="w-full h-2 bg-outline-variant rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+<div class="flex justify-between text-label-sm text-on-surface-variant font-semibold">
+<span>₹</span>
+<span>₹₹₹₹</span>
+</div>
+</div>
+<button class="w-full py-4 text-primary font-bold border border-primary/20 rounded-lg hover:bg-primary/5 active:bg-primary/10 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_alt_off">filter_alt_off</span>
+                    Clear All Filters
+                </button>
+</div>
+</aside>
+<!-- Right Main Content -->
+<div class="flex-1">
+<!-- Sorting Bar -->
+<div class="flex items-center justify-between mb-stack-lg p-4 bg-white rounded-xl luxury-shadow border border-outline-variant/20 reveal" style="animation-delay: 0.1s">
+<span class="text-body-md font-medium text-on-surface-variant">Showing 18 stores</span>
+<div class="flex items-center gap-4">
+<span class="text-label-sm text-outline uppercase">Sort By:</span>
+<select class="bg-transparent border-none text-body-md font-bold text-primary focus:ring-0 cursor-pointer">
+<option>Popularity</option>
+<option>Newest</option>
+<option>A - Z</option>
+<option>Rating</option>
+</select>
+</div>
+</div>
+<!-- Shop Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Shop Card 1 -->
+<div class="group bg-white rounded-xl overflow-hidden luxury-shadow luxury-shadow-hover transition-all duration-300 reveal" style="animation-delay: 0.2s">
+<div class="relative h-[200px] overflow-hidden skeleton">
+<img alt="Vogue Atelier" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" onload="this.parentElement.classList.remove('skeleton')" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZIWWYB7fkKuNaQB0klieqpo2HhuNUmg5sNV8Wzyan9HRJfWcgCExeh0v6N7mF1SYrY4P2z2SZbQXfNOAmHK8-f0s58KaozF2SffCDNM_Hz6uGofR6HZPZ8JF81KD-o8Y8mxwYaJ6RoNcdvJXBp9s9I5Ji_a9h_20hp-tqR61HAhZv_kdnTaOWeD-mK_IvYEcTT2koY4UQOMoVU2399oWh9M9lBwWFHAIRASG-RBxl7fJdN280ya0ZMHnaM5v6Gn-Et0Dzp_gfALBW"/>
+<div class="absolute top-3 right-3">
+<button class="wishlist-btn w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-on-surface-variant hover:bg-white hover:text-secondary transition-all luxury-shadow active:scale-90">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-3 left-3 flex gap-2">
+<span class="px-3 py-1 bg-primary/90 backdrop-blur-md text-white text-[10px] font-bold rounded-full uppercase tracking-tighter">Fashion</span>
+<span class="px-3 py-1 bg-secondary/90 backdrop-blur-md text-white text-[10px] font-bold rounded-full uppercase tracking-tighter">Ground Floor</span>
+</div>
+</div>
+<div class="p-5 space-y-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-[20px] leading-tight group-hover:text-primary transition-colors">Vogue Atelier</h3>
+<p class="text-label-sm text-outline">Shop G-12 • 10 AM - 10 PM</p>
+</div>
+<div class="flex items-center gap-1 bg-secondary-fixed px-2 py-1 rounded text-secondary font-bold text-[12px]">
+<span>4.8</span>
+<span class="material-symbols-outlined text-[12px] filled" data-icon="star">star</span>
+</div>
+</div>
+<div class="flex gap-2 pt-2">
+<button class="view-details-btn flex-1 py-3 bg-primary-container text-white font-bold rounded-lg hover:scale-[1.05] active:scale-95 transition-all text-label-sm shadow-md hover:shadow-lg" data-shop-floor="Ground Floor" data-shop-name="Vogue Atelier" data-shop-room="G-12">VIEW DETAILS</button>
+<button class="px-4 py-3 border border-outline-variant text-primary rounded-lg hover:bg-surface-container-low transition-colors active:scale-90">
+<span class="material-symbols-outlined" data-icon="near_me">near_me</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Shop Card 2 -->
+<div class="group bg-white rounded-xl overflow-hidden luxury-shadow luxury-shadow-hover transition-all duration-300 reveal" style="animation-delay: 0.3s">
+<div class="relative h-[200px] overflow-hidden skeleton">
+<img alt="Digital Haven" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" onload="this.parentElement.classList.remove('skeleton')" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSMm-hflR7O-Eq0tWkSXtJIAyr_rXJCqin63nsVriuEPDH2L8Vqd9IvA5vcyoYf0LdmyXw-8LH_ios3Xmvoq8C-dR0Le6AR8uOE4eIS4fo_5wnTkG3kfNRT2WIIG5FZQBLmOEVqDngYjySMDE5KHluZprj85dH-TNZ_0F_dLT8fQ7cddSBN74JPvJ_hIpnp1mEzlQmnfSZZ6IA-jpkVGHtPTHfZU3aHIFqTjRDjB5YMZcWkW1urDWUQHj5xz0DTAuogfDOuQ-gLMNc"/>
+<div class="absolute top-3 right-3">
+<button class="wishlist-btn w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-on-surface-variant hover:bg-white hover:text-secondary transition-all luxury-shadow active:scale-90">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-3 left-3 flex gap-2">
+<span class="px-3 py-1 bg-primary/90 backdrop-blur-md text-white text-[10px] font-bold rounded-full uppercase tracking-tighter">Electronics</span>
+<span class="px-3 py-1 bg-secondary/90 backdrop-blur-md text-white text-[10px] font-bold rounded-full uppercase tracking-tighter">Floor 2</span>
+</div>
+</div>
+<div class="p-5 space-y-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-[20px] leading-tight group-hover:text-primary transition-colors">Digital Haven</h3>
+<p class="text-label-sm text-outline">Shop S-402 • 10 AM - 10 PM</p>
+</div>
+<div class="flex items-center gap-1 bg-secondary-fixed px-2 py-1 rounded text-secondary font-bold text-[12px]">
+<span>4.9</span>
+<span class="material-symbols-outlined text-[12px] filled" data-icon="star">star</span>
+</div>
+</div>
+<div class="flex gap-2 pt-2">
+<button class="view-details-btn flex-1 py-3 bg-primary-container text-white font-bold rounded-lg hover:scale-[1.05] active:scale-95 transition-all text-label-sm shadow-md hover:shadow-lg" data-shop-floor="Floor 2" data-shop-name="Digital Haven" data-shop-room="S-402">VIEW DETAILS</button>
+<button class="px-4 py-3 border border-outline-variant text-primary rounded-lg hover:bg-surface-container-low transition-colors active:scale-90">
+<span class="material-symbols-outlined" data-icon="near_me">near_me</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Shop Card 3 -->
+<div class="group bg-white rounded-xl overflow-hidden luxury-shadow luxury-shadow-hover transition-all duration-300 reveal" style="animation-delay: 0.4s">
+<div class="relative h-[200px] overflow-hidden skeleton">
+<img alt="Lumina Jewels" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" onload="this.parentElement.classList.remove('skeleton')" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKQRy5dmU39WCrJrACxdCyxoeeM8lmtfBgqkbg3VJs7ojuKTDTpFkudY1rqni8Vo2sUnWqVEFQpeMmyKmpMA_dSUafx3hRr2OpSQteb42IKnwy4NVSJuPitDry5dvxCqyi86CdbKn4FajD6fXiFrT5EAsHtaGafAMjme7S-llHT-e91KDjXDvSZUCmQ5zJN7YhCthPN5iEnGWZrchsMWflB34Gn6xQhZ7vXx7I9hDb04h1MK5oDBB8WtupomA6DlkS3XYrpMPlbc5i"/>
+<div class="absolute top-3 right-3">
+<button class="wishlist-btn w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-on-surface-variant hover:bg-white hover:text-secondary transition-all luxury-shadow active:scale-90">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-3 left-3 flex gap-2">
+<span class="px-3 py-1 bg-primary/90 backdrop-blur-md text-white text-[10px] font-bold rounded-full uppercase tracking-tighter">Jewelry</span>
+<span class="px-3 py-1 bg-secondary/90 backdrop-blur-md text-white text-[10px] font-bold rounded-full uppercase tracking-tighter">Floor 1</span>
+</div>
+</div>
+<div class="p-5 space-y-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-[20px] leading-tight group-hover:text-primary transition-colors">Lumina Jewels</h3>
+<p class="text-label-sm text-outline">Shop F-215 • 10 AM - 10 PM</p>
+</div>
+<div class="flex items-center gap-1 bg-secondary-fixed px-2 py-1 rounded text-secondary font-bold text-[12px]">
+<span>4.7</span>
+<span class="material-symbols-outlined text-[12px] filled" data-icon="star">star</span>
+</div>
+</div>
+<div class="flex gap-2 pt-2">
+<button class="view-details-btn flex-1 py-3 bg-primary-container text-white font-bold rounded-lg hover:scale-[1.05] active:scale-95 transition-all text-label-sm shadow-md hover:shadow-lg" data-shop-floor="Floor 1" data-shop-name="Lumina Jewels" data-shop-room="F-215">VIEW DETAILS</button>
+<button class="px-4 py-3 border border-outline-variant text-primary rounded-lg hover:bg-surface-container-low transition-colors active:scale-90">
+<span class="material-symbols-outlined" data-icon="near_me">near_me</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<nav class="mt-section-gap flex justify-center items-center gap-2 reveal">
+<button class="w-12 h-12 flex items-center justify-center rounded-full border border-outline-variant hover:bg-primary/10 transition-all text-primary active:scale-90">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-primary text-white font-bold luxury-shadow active:scale-90">1</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-full border border-outline-variant hover:bg-primary/10 transition-all font-medium active:scale-90">2</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-full border border-outline-variant hover:bg-primary/10 transition-all font-medium active:scale-90">3</button>
+<span class="px-2">...</span>
+<button class="w-12 h-12 flex items-center justify-center rounded-full border border-outline-variant hover:bg-primary/10 transition-all font-medium active:scale-90">8</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-full border border-outline-variant hover:bg-primary/10 transition-all text-primary active:scale-90">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</nav>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant">
+<div class="max-w-[1280px] mx-auto px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="space-y-4">
+<a class="font-display-lg text-display-lg text-primary dark:text-inverse-primary tracking-tight" href="#">ABCD MALL</a>
+<p class="text-body-md text-on-surface-variant max-w-[240px]">The pinnacle of retail luxury in the heart of Mumbai.</p>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline-md text-headline-md text-primary">Quick Links</h4>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant hover:translate-x-1 hover:text-primary transition-all inline-block" href="#">About Us</a></li>
+<li><a class="text-on-surface-variant hover:translate-x-1 hover:text-primary transition-all inline-block" href="#">Store Directory</a></li>
+<li><a class="text-on-surface-variant hover:translate-x-1 hover:text-primary transition-all inline-block" href="#">Careers</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline-md text-headline-md text-primary">Services</h4>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant hover:translate-x-1 hover:text-primary transition-all inline-block" href="#">Concierge</a></li>
+<li><a class="text-on-surface-variant hover:translate-x-1 hover:text-primary transition-all inline-block" href="#">Gift Cards</a></li>
+<li><a class="text-on-surface-variant hover:translate-x-1 hover:text-primary transition-all inline-block" href="#">Events</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline-md text-headline-md text-primary">Newsletter</h4>
+<div class="flex border border-outline-variant rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-primary transition-all">
+<input class="flex-1 px-4 py-3 bg-white border-none outline-none text-body-md" placeholder="Email" type="email"/>
+<button class="px-6 bg-primary text-white font-bold hover:bg-primary-container transition-colors">JOIN</button>
+</div>
+<p class="text-label-sm text-outline">© 2024 ABCD Mall Mumbai. All Rights Reserved.</p>
+</div>
+</div>
+</footer>
+<!-- Functional Quick View Modal -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-on-surface/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" id="quick-view-modal">
+<!-- Clickable Overlay Area -->
+<div class="absolute inset-0" onclick="toggleModal()"></div>
+<div class="bg-white w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row relative z-10 scale-95 transition-transform duration-300" id="modal-container">
+<button class="absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-all luxury-shadow active:scale-90" onclick="toggleModal()">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<!-- Left Column: Carousel Placeholder -->
+<div class="w-full md:w-1/2 h-[300px] md:h-auto overflow-hidden bg-surface-container-low relative">
+<div class="h-full w-full flex items-center justify-center text-outline">
+<div class="text-center">
+<span class="material-symbols-outlined text-[48px] mb-2" data-icon="image">image</span>
+<p class="text-label-sm uppercase font-bold tracking-widest">Image Gallery</p>
+<p class="text-[10px] opacity-60 mt-1">Multi-angle views coming soon</p>
+</div>
+</div>
+<!-- Mock indicators -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant/50"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant/50"></div>
+</div>
+</div>
+<!-- Right Column: Details -->
+<div class="w-full md:w-1/2 p-8 space-y-6">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-extrabold rounded-full uppercase">Verified Partner</span>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px] filled" data-icon="star">star</span>
+<span class="text-label-sm font-bold" id="modal-rating">4.8</span>
+</div>
+</div>
+<h2 class="font-headline-lg text-headline-lg" id="modal-title">Shop Name</h2>
+<p class="text-on-surface-variant font-body-md mt-4 leading-relaxed">Experience world-class luxury at its finest. Our flagship store at ABCD Mall offers an exclusive curated collection featuring both international icons and premium domestic labels.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 bg-surface-container-low rounded-xl border border-outline-variant/20">
+<p class="text-label-sm text-outline uppercase font-bold mb-1">Location</p>
+<p class="font-bold text-on-surface" id="modal-location">Ground Floor, G-12</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl border border-outline-variant/20">
+<p class="text-label-sm text-outline uppercase font-bold mb-1">Hours</p>
+<p class="font-bold text-on-surface">10 AM - 10 PM</p>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl border border-outline-variant/20 h-24 flex items-center justify-center gap-3">
+<span class="material-symbols-outlined text-outline" data-icon="map">map</span>
+<span class="text-body-md font-medium text-outline">Interactive Map Preview</span>
+</div>
+<div class="flex gap-4 pt-2">
+<button class="flex-1 py-4 bg-primary text-white font-extrabold rounded-xl hover:bg-primary-container active:scale-95 transition-all luxury-shadow flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="directions">directions</span>
+                    DIRECTIONS
+                </button>
+<button class="w-14 h-14 border-2 border-primary/20 text-primary rounded-xl hover:bg-primary/5 active:scale-95 transition-all flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+    // Reveal animation on scroll
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Modal logic
+    function toggleModal(shopData = null) {
+        const modal = document.getElementById('quick-view-modal');
+        const container = document.getElementById('modal-container');
+        
+        if (modal.classList.contains('hidden')) {
+            // Fill data if provided
+            if (shopData) {
+                document.getElementById('modal-title').textContent = shopData.name;
+                document.getElementById('modal-location').textContent = `${shopData.floor}, ${shopData.room}`;
+            }
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                container.classList.remove('scale-95');
+                container.classList.add('scale-100');
+            }, 10);
+        } else {
+            modal.classList.add('opacity-0');
+            container.classList.add('scale-95');
+            container.classList.remove('scale-100');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+    }
+
+    // Wishlist Toggle
+    document.querySelectorAll('.wishlist-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const icon = this.querySelector('.material-symbols-outlined');
+            icon.classList.toggle('filled');
+            this.classList.toggle('heart-active');
+        });
+    });
+
+    // View Details triggers
+    document.querySelectorAll('.view-details-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const data = {
+                name: this.getAttribute('data-shop-name'),
+                floor: this.getAttribute('data-shop-floor'),
+                room: this.getAttribute('data-shop-room')
+            };
+            toggleModal(data);
+        });
+    });
+
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('quick-view-modal');
+            if (!modal.classList.contains('hidden')) toggleModal();
+        }
+    });
+
+    // Simulated skeleton loader removal (for demo purposes)
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.querySelectorAll('.skeleton').forEach(el => {
+                const img = el.querySelector('img');
+                if (img && img.complete) el.classList.remove('skeleton');
+            });
+        }, 800);
+    });
+</script>
+</body></html>

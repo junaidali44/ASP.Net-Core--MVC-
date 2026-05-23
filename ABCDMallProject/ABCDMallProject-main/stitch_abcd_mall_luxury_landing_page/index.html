@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ABCD Mall — Mumbai's Premium Shopping Destination</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #333333;
+      background: #F8F9FA;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .logo-text, .nav-menu a, .cta-btn, .stat-number {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* glassmorphism & reusable effects */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px);
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    /* Transparent header */
+    .navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: transparent;
+      transition: all 0.3s ease;
+      padding: 18px 0;
+    }
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      padding: 12px 0;
+    }
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 28px;
+      font-weight: 800;
+      color: #2C2C54;
+    }
+    .logo i {
+      color: #FF6584;
+      font-size: 28px;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-menu a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2C2C54;
+      transition: 0.2s;
+      font-size: 16px;
+    }
+    .nav-menu a:hover { color: #6C63FF; }
+    .nav-icons {
+      display: flex;
+      gap: 20px;
+    }
+    .nav-icons i {
+      font-size: 20px;
+      color: #2C2C54;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .nav-icons i:hover { color: #FF6584; }
+    .hamburger {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    /* hero slider */
+    .hero {
+      position: relative;
+      min-height: 85vh;
+      margin-top: -88px;
+      padding-top: 88px;
+      overflow: hidden;
+    }
+    .slider {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+    }
+    .slide.active {
+      opacity: 1;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(44,44,84,0.7) 0%, rgba(0,0,0,0.5) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 40px 20px;
+    }
+    .hero-content h1 {
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      max-width: 900px;
+    }
+    .hero-sub {
+      font-size: 18px;
+      margin-top: 16px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .btn-group {
+      margin-top: 32px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #6C63FF, #FF6584);
+      border: none;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 18px rgba(108,99,255,0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(108,99,255,0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+      padding: 12px 34px;
+      border-radius: 50px;
+      font-weight: 700;
+      color: white;
+      backdrop-filter: blur(4px);
+      transition: 0.2s;
+    }
+    .btn-outline:hover {
+      background: white;
+      color: #6C63FF;
+      border-color: white;
+    }
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+      font-size: 28px;
+      color: white;
+    }
+    @keyframes bounce {
+      0%,100%{ transform: translateX(-50%) translateY(0);}
+      50%{ transform: translateX(-50%) translateY(10px);}
+    }
+
+    /* stats bar */
+    .stats-section {
+      padding: 60px 0 40px;
+      background: #fff;
+      border-radius: 48px 48px 0 0;
+      margin-top: -20px;
+      position: relative;
+      z-index: 5;
+    }
+    .stats-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .stat-card {
+      flex: 1;
+      text-align: center;
+      background: white;
+      border-radius: 32px;
+      padding: 28px 16px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+      transition: 0.2s;
+    }
+    .stat-number {
+      font-size: 42px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #6C63FF, #FF6584);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .stat-label {
+      font-size: 18px;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    /* Quick Action Cards */
+    .quick-section {
+      padding: 60px 0;
+    }
+    .quick-grid {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .action-card {
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(12px);
+      border-radius: 48px;
+      padding: 32px 28px;
+      text-align: center;
+      width: 220px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 1px solid rgba(108,99,255,0.2);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    }
+    .action-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 40px rgba(108,99,255,0.2);
+      background: white;
+    }
+    .action-card i {
+      font-size: 48px;
+      background: linear-gradient(135deg, #6C63FF, #FF6584);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 16px;
+    }
+    .action-card h3 { font-size: 24px; margin: 12px 0; }
+    .action-link { font-weight: 600; color: #6C63FF; }
+
+    /* section header */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .section-header h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #2C2C54;
+    }
+    .view-all {
+      color: #FF6584;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    /* featured shops scroll */
+    .shops-scroll {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      padding-bottom: 12px;
+    }
+    .shop-card {
+      min-width: 240px;
+      background: white;
+      border-radius: 32px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .shop-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+    }
+    .shop-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 12px;
+      background: #ddd;
+    }
+    .star-rating i { color: gold; font-size: 14px; margin: 8px 0; }
+
+    /* movie grid */
+    .movies-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .movie-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      transition: all 0.3s;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .movie-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.12);
+    }
+    .movie-poster {
+      aspect-ratio: 2/3;
+      overflow: hidden;
+      position: relative;
+    }
+    .movie-poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .movie-card:hover .movie-poster img {
+      transform: scale(1.05);
+    }
+    .badge-limited {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #FF6584;
+      padding: 4px 10px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: bold;
+      color: white;
+    }
+    .movie-info {
+      padding: 18px;
+    }
+    .book-btn {
+      width: 100%;
+      background: #6C63FF;
+      border: none;
+      padding: 10px;
+      border-radius: 40px;
+      color: white;
+      font-weight: 600;
+      margin-top: 12px;
+      transition: 0.2s;
+    }
+    /* gallery masonry */
+    .gallery-masonry {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(108,99,255,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: 0.3s;
+      color: white;
+      font-weight: bold;
+    }
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    /* newsletter */
+    .newsletter {
+      background: linear-gradient(135deg, #6C63FF, #FF6584);
+      border-radius: 48px;
+      margin: 60px auto;
+      padding: 60px 30px;
+      text-align: center;
+      color: white;
+    }
+    .newsletter input {
+      padding: 16px 20px;
+      border-radius: 60px;
+      border: none;
+      width: 320px;
+      max-width: 80%;
+      margin-right: 12px;
+      font-size: 16px;
+    }
+    /* footer */
+    .footer {
+      background: #2C2C54;
+      color: #ddd;
+      padding: 50px 0 20px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 40px;
+    }
+    .social-icons i {
+      font-size: 24px;
+      margin-right: 18px;
+      transition: 0.2s;
+      color: white;
+    }
+    .social-icons i:hover { color: #FF6584; transform: translateY(-3px);}
+    .copyright {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+    }
+
+    /* skeleton loaders */
+    .skeleton {
+      background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.2s infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* responsive */
+    @media (max-width: 1024px) {
+      .movies-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-menu, .nav-icons { display: none; }
+      .hamburger { display: block; }
+      .hero-content h1 { font-size: 36px; }
+      .stats-grid { flex-direction: column; }
+      .quick-grid { justify-content: center; }
+      .gallery-masonry { grid-template-columns: repeat(2,1fr); }
+      .movies-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 576px) {
+      .container { padding: 0 16px; }
+      .btn-group { flex-direction: column; align-items: center; }
+    }
+    button { cursor: pointer; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #6C63FF;
+      width: 48px;
+      height: 48px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+      opacity: 0;
+      transition: 0.2s;
+      z-index: 99;
+    }
+    .show-btt { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<!-- ========== HEADER COMPONENT ========== -->
+<header class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <i class="fas fa-shopping-bag"></i>
+      <span class="logo-text">ABCD MALL</span>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shops</a> </li>
+      <li><a href="FoodCourt.html">Food Court</a></li>
+      <li><a href="Movies.html">Movies</a></li>
+      <li><a href="contactFeedback.html">Contact</a></li>
+    </ul>
+    <div class="nav-icons">
+      <i class="fas fa-search"></i>
+      <i class="fas fa-user"></i>
+    </div>
+    <div class="hamburger"><i class="fas fa-bars"></i></div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO SLIDER -->
+  <section class="hero">
+    <div class="slider" id="heroSlider">
+      <div class="slide active" style="background-image: url('https://picsum.photos/id/106/1920/1080?grayscale&seed=mall1');"></div>
+      <div class="slide" style="background-image: url('https://picsum.photos/id/20/1920/1080?seed=mall2');"></div>
+      <div class="slide" style="background-image: url('https://picsum.photos/id/30/1920/1080?seed=mall3');"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <h1>Mumbai's Premium Shopping Destination</h1>
+      <p class="hero-sub">250,000 sq ft | 4 Floors | 700 ft Frontage | 7-Level Parking</p>
+      <div class="btn-group">
+        <button class="btn-primary">Explore Now</button>
+        <button class="btn-outline">Book Tickets</button>
+      </div>
+      <div class="scroll-down"><i class="fas fa-chevron-down"></i></div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="stats-section">
+    <div class="container stats-grid" id="statsGrid">
+      <div class="stat-card"><div class="stat-number" data-target="52">0+</div><div class="stat-label">Stores</div></div>
+      <div class="stat-card"><div class="stat-number" data-target="24">0+</div><div class="stat-label">Food Outlets</div></div>
+      <div class="stat-card"><div class="stat-number" data-target="6">0</div><div class="stat-label">Screens</div></div>
+      <div class="stat-card"><div class="stat-number" data-target="1250">0+</div><div class="stat-label">Parking</div></div>
+    </div>
+  </section>
+
+  <!-- QUICK ACTION CARDS -->
+  <section class="quick-section container">
+    <div class="quick-grid">
+      <div class="action-card"><i class="fas fa-shopping-bag"></i><h3>Shops</h3><div class="action-link">View All →</div></div>
+      <div class="action-card"><i class="fas fa-utensils"></i><h3>Food Court</h3><div class="action-link">View All →</div></div>
+      <div class="action-card"><i class="fas fa-film"></i><h3>Movies</h3><div class="action-link">Book Now →</div></div>
+      <div class="action-card"><i class="fas fa-comment-dots"></i><h3>Feedback</h3><div class="action-link">Share →</div></div>
+    </div>
+  </section>
+
+  <!-- FEATURED SHOPS SECTION -->
+  <section class="container">
+    <div class="section-header"><h2>⭐ Featured Stores</h2><span class="view-all">View All →</span></div>
+    <div class="shops-scroll" id="shopsContainer"></div>
+  </section>
+
+  <!-- NOW SHOWING SECTION -->
+  <section class="container" style="margin-top: 60px;">
+    <div class="section-header"><h2>🎬 Now Showing</h2><span class="view-all">View All</span></div>
+    <div class="movies-grid" id="moviesContainer"></div>
+  </section>
+
+  <!-- GALLERY PREVIEW -->
+  <section class="container" style="margin-top: 70px;">
+    <div class="section-header"><h2>📸 Moments at ABCD Mall</h2><span class="view-all">View Full Gallery →</span></div>
+    <div class="gallery-masonry" id="galleryGrid"></div>
+  </section>
+
+  <!-- NEWSLETTER SECTION -->
+  <div class="container">
+    <div class="newsletter">
+      <i class="fas fa-envelope-open-text" style="font-size: 44px; margin-bottom: 16px; display: inline-block;"></i>
+      <h2 style="font-size: 28px;">Subscribe to Newsletter</h2>
+      <p style="margin: 12px 0 24px;">Get exclusive offers & updates</p>
+      <div><input type="email" placeholder="Your email address"><button class="btn-primary" style="background: white; color:#6C63FF; margin-top: 0;">Subscribe</button></div>
+    </div>
+  </div>
+</main>
+
+<!-- ========== FOOTER COMPONENT ========== -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div><h3>About Us</h3><p style="margin-top: 12px;">Mumbai's luxury hub since 2015. 250k sq ft of premium retail, dining & entertainment.</p><p>📍 Established 2015</p></div>
+    <div><h3>Quick Links</h3><ul style="list-style: none; margin-top: 12px;"><li>Offers</li><li>Events</li><li>Careers</li><li>Gift Cards</li></ul></div>
+    <div><h3>Contact Info</h3><address style="font-style: normal; margin-top: 12px;"><i class="fas fa-map-marker-alt"></i> Bandra Kurla Complex, Mumbai<br><i class="fas fa-phone"></i> +91 22 4000 1234<br><i class="fas fa-envelope"></i> hello@abcdmall.com</address></div>
+    <div><h3>Social Media</h3><div class="social-icons" style="margin-top: 16px;"><i class="fab fa-facebook-f"></i><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i></div></div>
+  </div>
+  <div class="container copyright"><div>© 2025 ABCD Mall — All Rights Reserved &nbsp;&nbsp;|&nbsp;&nbsp; <i class="fab fa-cc-visa"></i> <i class="fab fa-cc-mastercard"></i> <i class="fab fa-google-pay"></i></div></div>
+</footer>
+<div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
+<script>
+  // ---- Sticky Nav ----
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 50) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+    const btt = document.getElementById('backToTop');
+    if(window.scrollY > 600) btt.classList.add('show-btt');
+    else btt.classList.remove('show-btt');
+  });
+
+  // ---- Hero Slider ----
+  let slides = document.querySelectorAll('.slide');
+  let currentSlide = 0;
+  function nextSlide() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }
+  setInterval(nextSlide, 5000);
+
+  // ---- Counter Animation (Stats) ----
+  const counters = document.querySelectorAll('.stat-number');
+  let counted = false;
+  function startCounters() {
+    if(counted) return;
+    counters.forEach(counter => {
+      const target = +counter.getAttribute('data-target');
+      let current = 0;
+      const increment = target / 70;
+      const updateCounter = () => {
+        if(current < target) {
+          current = Math.ceil(current + increment);
+          counter.innerText = current + (counter.innerText.includes('+') ? '+' : '');
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.innerText = target + (counter.innerText.includes('+') ? '+' : '');
+        }
+      };
+      updateCounter();
+    });
+    counted = true;
+  }
+  const statsSection = document.querySelector('.stats-section');
+  const observer = new IntersectionObserver((entries) => {
+    if(entries[0].isIntersecting) startCounters();
+  }, { threshold: 0.4 });
+  observer.observe(statsSection);
+
+  // ---- Featured Shops Data ----
+  const shops = [
+    { name: "Zara", category: "Fashion", floor: "Ground Floor", rating: 4.8, img: "https://randomuser.me/api/portraits/women/68.jpg" },
+    { name: "Apple Store", category: "Electronics", floor: "1st Floor", rating: 4.9, img: "https://randomuser.me/api/portraits/men/32.jpg" },
+    { name: "Tanishq", category: "Jewellery", floor: "Ground Floor", rating: 4.7, img: "https://randomuser.me/api/portraits/women/44.jpg" },
+    { name: "Nike", category: "Sportswear", floor: "2nd Floor", rating: 4.6, img: "https://randomuser.me/api/portraits/men/22.jpg" },
+    { name: "Sephora", category: "Beauty", floor: "1st Floor", rating: 4.8, img: "https://randomuser.me/api/portraits/women/90.jpg" }
+  ];
+  const shopsContainer = document.getElementById('shopsContainer');
+  shopsContainer.innerHTML = shops.map(shop => `
+    <div class="shop-card">
+      <img class="shop-img" src="${shop.img}" alt="${shop.name}" onerror="this.src='https://picsum.photos/id/64/100/100'">
+      <h3>${shop.name}</h3>
+      <p>${shop.category} | ${shop.floor}</p>
+      <div class="star-rating">${'<i class="fas fa-star"></i>'.repeat(Math.floor(shop.rating))} ${shop.rating}</div>
+    </div>
+  `).join('');
+
+  // ---- Movies Data ----
+  const movies = [
+    { title: "Pushpa 2", rating: "8.7/10", lang: "Hindi", duration: "2h 45m", seatsLeft: 12, price: "₹350", poster: "https://picsum.photos/id/100/300/450" },
+    { title: "Animal", rating: "8.2/10", lang: "Hindi", duration: "2h 50m", seatsLeft: 5, price: "₹400", poster: "https://picsum.photos/id/101/300/450" },
+    { title: "Wonka", rating: "7.9/10", lang: "English", duration: "2h 10m", seatsLeft: 32, price: "₹320", poster: "https://picsum.photos/id/102/300/450" }
+  ];
+  const moviesContainer = document.getElementById('moviesContainer');
+  moviesContainer.innerHTML = movies.map(movie => `
+    <div class="movie-card">
+      <div class="movie-poster">
+        <img src="${movie.poster}" alt="${movie.title}" loading="lazy">
+        ${movie.seatsLeft < 20 ? '<div class="badge-limited">Limited Seats</div>' : ''}
+      </div>
+      <div class="movie-info">
+        <h3>${movie.title}</h3>
+        <div>⭐ ${movie.rating} • ${movie.lang} • ${movie.duration}</div>
+        <div>🎟️ ${movie.seatsLeft} seats left</div>
+        <div style="font-weight:bold; margin:8px 0;">${movie.price}</div>
+        <button class="book-btn">Book Now →</button>
+      </div>
+    </div>
+  `).join('');
+
+  // ---- Gallery Images (masonry) ----
+  const galleryImages = ["https://picsum.photos/id/96/400/400", "https://picsum.photos/id/42/400/400", "https://picsum.photos/id/22/400/400", "https://picsum.photos/id/26/400/400", "https://picsum.photos/id/28/400/400", "https://picsum.photos/id/169/400/400"];
+  const galleryGrid = document.getElementById('galleryGrid');
+  galleryGrid.innerHTML = galleryImages.map((img, idx) => `
+    <div class="gallery-item">
+      <img src="${img}" alt="moment ${idx}">
+      <div class="gallery-overlay"><span>✨ Glimpse of ABCD ✨</span></div>
+    </div>
+  `).join('');
+
+  // ---- back to top + fade on scroll animation ----
+  const backTop = document.getElementById('backToTop');
+  backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Scroll reveal (fade-in)
+  const fadeElements = document.querySelectorAll('.stat-card, .action-card, .shop-card, .movie-card, .gallery-item, .newsletter');
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) entry.target.style.opacity = '1';
+      else entry.target.style.opacity = '0';
+    });
+  }, { threshold: 0.1 });
+  fadeElements.forEach(el => { el.style.opacity = '0'; el.style.transition = 'opacity 0.6s ease'; fadeObserver.observe(el); });
+  setTimeout(() => fadeElements.forEach(el => el.style.opacity = '1'), 100);
+</script>
+</body>
+</html>

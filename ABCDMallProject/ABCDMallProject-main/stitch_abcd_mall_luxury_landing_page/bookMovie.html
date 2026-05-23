@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ABCD Mall Cinema - Payment &amp; Confirmation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-tint": "#4f44e2",
+                "inverse-surface": "#303030",
+                "on-primary-container": "#fffbff",
+                "on-secondary-container": "#670023",
+                "surface-container-lowest": "#ffffff",
+                "on-error": "#ffffff",
+                "tertiary-fixed": "#e2dfff",
+                "surface-container-highest": "#e4e2e1",
+                "primary-fixed-dim": "#c4c0ff",
+                "on-primary": "#ffffff",
+                "on-background": "#1b1c1c",
+                "surface-variant": "#e4e2e1",
+                "primary": "#4d41df",
+                "on-tertiary-fixed": "#17173e",
+                "surface-dim": "#dcd9d9",
+                "secondary": "#b0284b",
+                "on-secondary-fixed": "#400012",
+                "inverse-on-surface": "#f3f0f0",
+                "primary-container": "#675df9",
+                "inverse-primary": "#c4c0ff",
+                "secondary-container": "#fd6483",
+                "on-tertiary": "#ffffff",
+                "on-tertiary-container": "#fffbff",
+                "error": "#ba1a1a",
+                "tertiary-fixed-dim": "#c3c2f3",
+                "tertiary-container": "#71709d",
+                "secondary-fixed": "#ffd9dd",
+                "secondary-fixed-dim": "#ffb2bc",
+                "on-tertiary-fixed-variant": "#43436c",
+                "on-surface-variant": "#464555",
+                "on-surface": "#1b1c1c",
+                "surface-container-low": "#f6f3f2",
+                "primary-fixed": "#e3dfff",
+                "error-container": "#ffdad6",
+                "surface": "#fbf9f8",
+                "on-primary-fixed-variant": "#3622ca",
+                "surface-container": "#f0eded",
+                "on-error-container": "#93000a",
+                "on-secondary-fixed-variant": "#8f0935",
+                "outline-variant": "#c7c4d8",
+                "on-primary-fixed": "#100069",
+                "background": "#fbf9f8",
+                "surface-bright": "#fbf9f8",
+                "outline": "#777587",
+                "tertiary": "#585883",
+                "surface-container-high": "#eae8e7",
+                "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "stack-md": "16px",
+                "stack-lg": "32px",
+                "gutter": "24px",
+                "stack-sm": "8px",
+                "section-gap": "80px",
+                "margin-desktop": "48px",
+                "max-width": "1280px",
+                "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                "body-md": ["Inter"],
+                "display-lg": ["Plus Jakarta Sans"],
+                "headline-lg": ["Plus Jakarta Sans"],
+                "label-sm": ["Inter"],
+                "headline-md": ["Plus Jakarta Sans"],
+                "body-lg": ["Inter"],
+                "display-lg-mobile": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 100;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- Header Navigation -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="max-w-[1280px] mx-auto px-margin-desktop flex items-center justify-between h-20">
+<h1 class="font-display-lg text-display-lg text-secondary tracking-tight">ABCD MALL</h1>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="home.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="shop.html">Shops</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="FoodCourt.html">Food Court</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="Movies.html">Movies</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="contactFeedback.html">Contact</a>
+</nav>
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-105 transition-transform" data-icon="shopping_bag">shopping_bag</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-105 transition-transform" data-icon="person">person</span>
+</div>
+</div>
+</header>
+<main class="mt-32 mb-20 px-4 md:px-0">
+<!-- Booking Overview Canvas -->
+<div class="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter" id="booking-flow">
+<!-- Left: Movie Selection Preview -->
+<div class="lg:col-span-8 space-y-stack-lg">
+<div class="bg-surface-container-low p-stack-lg rounded-xl overflow-hidden relative group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-700" data-alt="A high-fashion, cinematic movie poster for a luxury action thriller set in a futuristic Mumbai cityscape. The lighting is dramatic with neon highlights in vibrant pink and deep blue, against a sophisticated dark background. The scene exudes a premium, elite entertainment atmosphere consistent with a world-class luxury cinema experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARkr0CUA3z2OXT07mPw1DieFWybu8vPuj5kg1vmHzmDnLJU7cgefqrzD8mLdr5HF_B0wd-8wy4A4gnuUhlGv8xjeqTtw3cqrrRk15KQdxQ7quCBGumn-cmm19taN_qoSheu3uTdRmLNsw7hl8pvRyugxpSX7XMzNOIxd2lPgayGXY-Yy2EnnsJ-9K-hkvnpijlek8Br4ECDp9aLH29E5PA-1PnwdaasGgnIvQUf0tRZ24OQ5bBlQIuwbHhqdt44Asq2Ar1dniOayeP"/>
+<div class="relative z-10 flex flex-col md:flex-row gap-gutter">
+<div class="w-full md:w-48 h-72 rounded-lg overflow-hidden shadow-xl">
+<img class="w-full h-full object-cover" data-alt="A detailed thumbnail of a high-end luxury movie poster showing a glamorous character dressed in elite Mumbai fashion. The aesthetic is sharp and modern, featuring high-contrast studio lighting, soft shadows, and a sophisticated color palette of navy, gold, and vibrant accent hues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1CVIfeq9ghDrFHwxoL0sFyIcUTmxhAl-Wvab9WbVq45UnoRnSTx8bvWRb030yTw8skHWRglp5EJjGF-fNm-zOCEEThS-UePr_iPI70EQXU9f31jYJuDXPDJA7D-ySFARD8MZFfxJhewu_FUG8Yhid4nkBVZl-BEq5Edc785N_sV476Ex-or_pcxF_Q3Dw3K6RZNFVL2jwnOawuKPrqOb_5ZV_Y6c9_VMUtue4zlvggT2Kqs6pDPlk9W_LqtKtRHofXmB4ct5Mb73R"/>
+</div>
+<div class="flex-1 flex flex-col justify-end">
+<span class="inline-block bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-label-sm mb-2 w-fit">Mumbai Exclusive</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2 uppercase tracking-wide">The Midnight Gala</h2>
+<p class="text-body-lg text-on-surface-variant mb-4">ABCD Cinema • Screen 04 • Executive Recliner</p>
+<div class="flex flex-wrap gap-4">
+<div class="bg-white/50 backdrop-blur-sm p-3 rounded-lg border border-white/40">
+<p class="text-label-sm text-outline mb-1 uppercase">Date</p>
+<p class="font-bold text-on-surface">Oct 24, 2024</p>
+</div>
+<div class="bg-white/50 backdrop-blur-sm p-3 rounded-lg border border-white/40">
+<p class="text-label-sm text-outline mb-1 uppercase">Time</p>
+<p class="font-bold text-on-surface">09:30 PM</p>
+</div>
+<div class="bg-white/50 backdrop-blur-sm p-3 rounded-lg border border-white/40">
+<p class="text-label-sm text-outline mb-1 uppercase">Seats</p>
+<p class="font-bold text-on-surface">J12, J13</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-surface-container rounded-xl p-stack-md">
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Add-ons</h3>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant">
+<span class="text-body-md text-on-surface-variant">Caramel Popcorn (L)</span>
+<span class="font-semibold text-on-surface">₹450</span>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="text-body-md text-on-surface-variant">Pepsi Max (M) x 2</span>
+<span class="font-semibold text-on-surface">₹320</span>
+</div>
+</div>
+<div class="bg-surface-container-high rounded-xl p-stack-md flex flex-col justify-center items-center text-center">
+<span class="text-label-sm text-outline uppercase mb-2">Grand Total</span>
+<h4 class="font-display-lg text-display-lg text-secondary">₹1,520.00</h4>
+<p class="text-label-sm text-on-surface-variant mt-2">Inclusive of all taxes &amp; fees</p>
+</div>
+</div>
+</div>
+<!-- Right: Action Area -->
+<div class="lg:col-span-4 flex flex-col gap-stack-lg">
+<div class="bg-white p-8 rounded-xl shadow-[0_20px_50px_rgba(79,68,226,0.08)] border border-outline-variant/30">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Confirm Selection</h3>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            No-cancellation policy applies
+                        </li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            M-Ticket will be sent via SMS
+                        </li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            ID proof required at entry
+                        </li>
+</ul>
+<button class="w-full bg-primary text-white py-4 rounded-full font-headline-md text-headline-md shadow-lg hover:scale-[1.02] active:scale-95 transition-all duration-300" id="pay-now-btn">
+                        Pay ₹1,520.00
+                    </button>
+</div>
+<div class="bg-secondary/5 p-6 rounded-xl border border-secondary/10 flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="info">info</span>
+<p class="text-label-sm text-secondary">Earn 152 ABCD Rewards points with this transaction. Points will be credited within 24 hours.</p>
+</div>
+</div>
+</div>
+<!-- Payment Modal Backdrop -->
+<div class="fixed inset-0 z-[60] hidden flex items-center justify-center p-4" id="payment-modal">
+<div class="absolute inset-0 bg-inverse-surface/40 backdrop-blur-md"></div>
+<div class="relative bg-white w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-300">
+<!-- Modal Header -->
+<div class="bg-surface-container-high p-6 flex justify-between items-center">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Payment Method</h2>
+<p class="text-label-sm text-outline">Securely complete your booking</p>
+</div>
+<button class="p-2 hover:bg-surface-variant rounded-full transition-colors" id="close-modal">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<!-- Modal Body -->
+<div class="p-8">
+<div class="flex gap-4 mb-8">
+<button class="flex-1 py-3 border-2 border-primary rounded-xl text-primary font-bold flex flex-col items-center gap-1 bg-primary/5">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+                            Card
+                        </button>
+<button class="flex-1 py-3 border border-outline-variant rounded-xl text-outline-variant font-bold flex flex-col items-center gap-1 hover:border-primary hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="qr_code_2">qr_code_2</span>
+                            UPI / QR
+                        </button>
+</div>
+<form class="space-y-6" id="payment-form">
+<div class="space-y-1">
+<label class="text-label-sm text-outline font-semibold uppercase">Card Number</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="XXXX XXXX XXXX 4452" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="text-label-sm text-outline font-semibold uppercase">Expiry</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:border-primary outline-none" placeholder="MM/YY" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-label-sm text-outline font-semibold uppercase">CVV</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:border-primary outline-none" placeholder="***" type="password"/>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full bg-primary text-white py-4 rounded-full font-bold flex items-center justify-center gap-3 group" type="submit">
+                                Authorize ₹1,520.00
+                                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- Success Confirmation State (Hidden initially) -->
+<div class="hidden max-w-[800px] mx-auto mt-10" id="success-state">
+<div class="text-center mb-12">
+<div class="inline-flex items-center justify-center w-24 h-24 bg-primary rounded-full mb-6 shadow-[0_10px_40px_rgba(77,65,223,0.4)] animate-bounce">
+<span class="material-symbols-outlined text-white text-[48px]" data-icon="check">check</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-primary mb-2">Booking Confirmed!</h2>
+<p class="text-body-lg text-on-surface-variant">Get ready for an elite cinematic experience at ABCD Mall.</p>
+<p class="mt-4 font-bold text-secondary tracking-widest uppercase">REF: #AMB-2024-8893</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter bg-white p-8 rounded-3xl shadow-xl relative overflow-hidden border border-outline-variant/30">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full"></div>
+<div class="space-y-6">
+<div>
+<p class="text-label-sm text-outline uppercase">Ticket Holder</p>
+<h4 class="font-headline-md text-headline-md text-on-surface">Rajiv Malhotra</h4>
+</div>
+<div>
+<p class="text-label-sm text-outline uppercase">Screen &amp; Seat</p>
+<h4 class="font-headline-md text-headline-md text-on-surface">Screen 04 • J12, J13</h4>
+</div>
+<div class="flex gap-8">
+<div>
+<p class="text-label-sm text-outline uppercase">Entrance</p>
+<h4 class="font-bold text-on-surface">Level 3, Wing A</h4>
+</div>
+</div>
+<div class="pt-6 flex flex-wrap gap-4">
+<button class="bg-primary text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                            Download Ticket
+                        </button>
+<button class="border-2 border-primary text-primary px-6 py-3 rounded-full font-bold hover:bg-primary/5 transition-colors" onclick="location.reload()">
+                            Back to Home
+                        </button>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center border-l border-outline-variant/20 pl-0 md:pl-8 mt-8 md:mt-0">
+<div class="p-4 bg-surface-container-low rounded-2xl border-2 border-dashed border-outline-variant mb-4">
+<img class="w-48 h-48 mix-blend-multiply" data-alt="A clean, high-resolution QR code designed for a premium luxury service. The QR code is presented in a modern, minimalist frame with rounded corners, surrounded by soft lighting and a clean white background. It represents a digital entry ticket for an elite Mumbai cinema experience, consistent with high-fashion retail aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhJEhxUUKmFdOGirjL7U9HVtbAEkLQONnV4UF4LxQx_96ffRLNEHFyCvjyZEjLwgS7687JxVFGt2RBgMFoMb-O4Bgin55PsuzR5y8bZ6cPKlmJz7ww-9hIhJhJ0taU1141unyaSKoWSh8fbxp_c_mjGjC5PqG1PQ2b9nWbm-6lrpyJvHKdGeQLY9BpHbdfO5uhmQc7I5Fvk-SHhh7DGVnoi9eT-e-nA6rT_2Q7c31BUc0uc7-LL0XXsQqzWVslsv_5A4SOgAFvF3Zd"/>
+</div>
+<p class="text-label-sm text-outline text-center">Scan this at the cinema entrance</p>
+<div class="mt-8 w-full">
+<p class="text-center text-label-sm text-outline uppercase mb-4">Share the excitement</p>
+<div class="flex justify-center gap-4">
+<button class="w-10 h-10 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:scale-110 transition-transform"><span class="material-symbols-outlined" data-icon="share">share</span></button>
+<button class="w-10 h-10 rounded-full bg-[#1DA1F2] text-white flex items-center justify-center hover:scale-110 transition-transform"><span class="material-symbols-outlined" data-icon="post_add">post_add</span></button>
+<button class="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:scale-110 transition-transform"><span class="material-symbols-outlined" data-icon="chat">chat</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-surface-container-highest w-full border-t border-outline-variant">
+<div class="max-w-[1280px] mx-auto px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="col-span-1 md:col-span-1">
+<h2 class="font-display-lg text-display-lg text-primary mb-4">ABCD MALL</h2>
+<p class="text-body-md text-on-surface-variant">Mumbai's premier destination for luxury shopping, dining, and world-class entertainment.</p>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">Explore</h4>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant hover:text-primary transition-transform hover:translate-x-1 inline-block" href="#">About Us</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-transform hover:translate-x-1 inline-block" href="shop.html">Shops</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-transform hover:translate-x-1 inline-block" href="#">Dining</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-transform hover:translate-x-1 inline-block" href="#">Cinema</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">Support</h4>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant hover:text-primary transition-transform hover:translate-x-1 inline-block" href="contactFeedback.html">Contact</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-transform hover:translate-x-1 inline-block" href="#">Careers</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-transform hover:translate-x-1 inline-block" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-transform hover:translate-x-1 inline-block" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">Newsletter</h4>
+<div class="flex gap-2">
+<input class="bg-white border border-outline-variant px-4 py-2 rounded-lg flex-1 outline-none focus:border-primary" placeholder="Email" type="email"/>
+<button class="bg-primary text-white p-2 rounded-lg"><span class="material-symbols-outlined" data-icon="send">send</span></button>
+</div>
+<p class="text-label-sm text-on-surface-variant mt-8">© 2024 ABCD Mall Mumbai. All Rights Reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+        const payBtn = document.getElementById('pay-now-btn');
+        const modal = document.getElementById('payment-modal');
+        const closeModal = document.getElementById('close-modal');
+        const paymentForm = document.getElementById('payment-form');
+        const bookingFlow = document.getElementById('booking-flow');
+        const successState = document.getElementById('success-state');
+
+        payBtn.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        paymentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simulate processing
+            const submitBtn = paymentForm.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span> Processing...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                bookingFlow.classList.add('hidden');
+                successState.classList.remove('hidden');
+                document.body.style.overflow = 'auto';
+                createConfetti();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 2000);
+        });
+
+        function createConfetti() {
+            const colors = ['#4d41df', '#b0284b', '#fd6483', '#c4c0ff'];
+            for (let i = 0; i < 100; i++) {
+                const confetto = document.createElement('div');
+                confetto.classList.add('confetti');
+                confetto.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetto.style.left = Math.random() * 100 + 'vw';
+                confetto.style.top = '-10px';
+                confetto.style.transform = `scale(${Math.random() * 1.5})`;
+                confetto.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                document.body.appendChild(confetto);
+                setTimeout(() => confetto.remove(), 5000);
+            }
+        }
+    </script>
+</body></html>

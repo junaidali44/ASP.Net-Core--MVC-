@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ABCD MALL | Multiplex Movies</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#4f44e2",
+                        "inverse-surface": "#303030",
+                        "on-primary-container": "#fffbff",
+                        "on-secondary-container": "#670023",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#e2dfff",
+                        "surface-container-highest": "#e4e2e1",
+                        "primary-fixed-dim": "#c4c0ff",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1b1c1c",
+                        "surface-variant": "#e4e2e1",
+                        "primary": "#4d41df",
+                        "on-tertiary-fixed": "#17173e",
+                        "surface-dim": "#dcd9d9",
+                        "secondary": "#b0284b",
+                        "on-secondary-fixed": "#400012",
+                        "inverse-on-surface": "#f3f0f0",
+                        "primary-container": "#675df9",
+                        "inverse-primary": "#c4c0ff",
+                        "secondary-container": "#fd6483",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#fffbff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#c3c2f3",
+                        "tertiary-container": "#71709d",
+                        "secondary-fixed": "#ffd9dd",
+                        "secondary-fixed-dim": "#ffb2bc",
+                        "on-tertiary-fixed-variant": "#43436c",
+                        "on-surface-variant": "#464555",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-low": "#f6f3f2",
+                        "primary-fixed": "#e3dfff",
+                        "error-container": "#ffdad6",
+                        "surface": "#fbf9f8",
+                        "on-primary-fixed-variant": "#3622ca",
+                        "surface-container": "#f0eded",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#8f0935",
+                        "outline-variant": "#c7c4d8",
+                        "on-primary-fixed": "#100069",
+                        "background": "#fbf9f8",
+                        "surface-bright": "#fbf9f8",
+                        "outline": "#777587",
+                        "tertiary": "#585883",
+                        "surface-container-high": "#eae8e7",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "gutter": "24px",
+                        "stack-sm": "8px",
+                        "section-gap": "80px",
+                        "margin-desktop": "48px",
+                        "max-width": "1280px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-glow {
+            box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)] h-20">
+<div class="max-w-[1280px] mx-auto px-margin-desktop flex items-center justify-between h-full">
+<div class="font-display-lg text-display-lg text-secondary tracking-tight">ABCD MALL</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="home.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="shop.html">Shops</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="FoodCourt.html">Food Court</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="Movies.html">Movies</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="contactFeedback.html">Contact</a>
+</div>
+<div class="flex items-center space-x-6">
+<div class="relative group">
+<span class="material-symbols-outlined text-primary text-2xl cursor-pointer hover:scale-110 transition-transform">shopping_bag</span>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined text-primary text-2xl cursor-pointer hover:scale-110 transition-transform">person</span>
+</div>
+</div>
+</div>
+</nav>
+<main class="mt-20">
+<!-- Hero Promo Carousel -->
+<section class="relative h-[600px] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDyAsmtBQ67WrdwWM59qlzttTf_Z5cHAN_Kkdm0s9DXfy_hhTmsMcKE7nukR8wRxM1d4ri688s3q72x6OvpAj0XZ_BYELG4maSvSK2Tc_CuM6tBTVq_cpKkOP4P7yH3f9HeaLryX1LToDl4AzSlG_kpvPuF6Dm2WJr0BlqPiblqn8s8WAzzj7lYj6CBezOyiAhi75S_FZZS3AwvaHfhe4b6-nrLS3xAoaaDvIAR6-uVtIeY3D9m7g1EjTqt8XlBfHaI9iMBckCNMB5L')">
+<div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+</div>
+<div class="relative max-w-[1280px] mx-auto px-margin-desktop h-full flex flex-col justify-center items-start text-white">
+<span class="px-4 py-1 bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-label-sm mb-6 uppercase tracking-widest">Premium Multiplex</span>
+<h1 class="font-display-lg text-display-lg mb-4 max-w-2xl leading-none">Experience Cinema Like Never Before</h1>
+<p class="font-body-lg text-body-lg mb-8 max-w-xl text-white/80">Immerse yourself in world-class visuals and Dolby Atmos sound in Mumbai's most elite retail destination.</p>
+<div class="flex gap-4">
+<button class="bg-primary text-white px-8 py-4 rounded-lg font-headline-md text-headline-md hover:scale-105 transition-all active:scale-95 shadow-lg shadow-primary/20">Check All Showtimes</button>
+<button class="glass px-8 py-4 rounded-lg font-headline-md text-headline-md hover:bg-white/20 transition-all">VIP Lounge Access</button>
+</div>
+</div>
+</section>
+<!-- Filters & Date Selector -->
+<section class="py-12 bg-surface">
+<div class="max-w-[1280px] mx-auto px-margin-desktop">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
+<!-- Date Selector -->
+<div class="flex items-center p-1 bg-surface-container rounded-xl">
+<button class="px-6 py-3 rounded-lg bg-white text-primary font-bold shadow-sm transition-all">Today</button>
+<button class="px-6 py-3 rounded-lg text-on-surface-variant hover:bg-white/50 transition-all">Tomorrow</button>
+<button class="px-6 py-3 rounded-lg text-on-surface-variant hover:bg-white/50 transition-all">This Weekend</button>
+</div>
+<!-- Language Filter -->
+<div class="flex items-center gap-3">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase">Language:</span>
+<div class="flex gap-2">
+<span class="px-4 py-1.5 rounded-full border border-primary bg-primary-container/10 text-primary font-label-sm text-label-sm cursor-pointer">English</span>
+<span class="px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant hover:border-primary transition-colors cursor-pointer">Hindi</span>
+<span class="px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant hover:border-primary transition-colors cursor-pointer">Marathi</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Movie Grid -->
+<section class="py-section-gap">
+<div class="max-w-[1280px] mx-auto px-margin-desktop">
+<h2 class="font-headline-lg text-headline-lg mb-12 flex items-center gap-4">
+<span class="w-2 h-10 bg-secondary rounded-full"></span>
+                    Now Showing
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Movie Card 1: Nexus One -->
+<div class="group flex flex-col bg-white rounded-2xl overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500">
+<div class="relative aspect-[2/3] overflow-hidden">
+<img alt="Nexus One" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDppO-8TYzb_jUPUXM1a1JUOifJHS3xbHVaqwA-bxWhDLEwXC_xYPNy_WSWKkn_Kj0jnJlccX5qlp2MCEUOagx_keEV0kir8lY1vQOHKYmr4IsQSiOFSw-wd78tVkmwpEXVOmgCxYy243uxfYn1yovf9q-LFkFJekFAh-KErXQXvpCtCm_3i-T5B3By42zakStqRXC2dS5_MCFoFyDmGUjgtiAvQ1ocpVk3zAWUdhTDFq2RrzJsr8JI3FI6d5QNYDHALHqrJRof__Rb"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer">
+<div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/40">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute top-4 left-4 glass px-3 py-1 rounded-lg flex items-center gap-1.5">
+<span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface">8.9</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Nexus One</h3>
+<span class="text-primary font-bold">₹350+</span>
+</div>
+<p class="text-on-surface-variant font-body-md text-sm mb-4">Sci-Fi • English • 2h 45m</p>
+<!-- Available Seats -->
+<div class="mb-6">
+<div class="flex justify-between font-label-sm text-label-sm mb-2 text-on-surface-variant">
+<span>Available Seats</span>
+<span class="text-green-600">High Availability</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-green-500 w-[85%] rounded-full"></div>
+</div>
+</div>
+<!-- Showtimes -->
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1.5 bg-surface-container-low text-on-surface-variant rounded-md text-sm border border-outline-variant/30 hover:border-primary transition-colors cursor-pointer">10:45 AM</span>
+<span class="px-3 py-1.5 bg-surface-container-low text-on-surface-variant rounded-md text-sm border border-outline-variant/30 hover:border-primary transition-colors cursor-pointer">02:15 PM</span>
+<span class="px-3 py-1.5 bg-surface-container-low text-on-surface-variant rounded-md text-sm border border-outline-variant/30 hover:border-primary transition-colors cursor-pointer">08:00 PM</span>
+</div>
+<button class="w-full bg-primary text-white py-3.5 rounded-xl font-bold hover:bg-primary/90 transition-colors mt-auto">Book Now</button>
+</div>
+</div>
+<!-- Movie Card 2: Midnight in Mumbai -->
+<div class="group flex flex-col bg-white rounded-2xl overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500">
+<div class="relative aspect-[2/3] overflow-hidden">
+<img alt="Midnight in Mumbai" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBIhYnXeBJhjadLyh4coZRCvX_R5ziPh59M87CWbdZg8TAVnYk4H6D4ktrkmya4KBpmNGbwDC_JZ7r34hhkLBzRnQCWf-ZgHeP8Wqihod2OqFXpENCw2zHfbNRyLgevu77Ap4A9m6bq81VeWp6C-uAGtEaGu6tGdUUUqXguzJzWmUdyoLLGdR1pupHtJoD4DASh4f7uG6pzMlTSMMXj8763wcXQOuKY0GtosWgDu_QZ-AtCNdPaxcgdiAtqWCkft2XLxIaKcPgfWEn"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer">
+<div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/40">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute top-4 left-4 glass px-3 py-1 rounded-lg flex items-center gap-1.5">
+<span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface">8.5</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Midnight in Mumbai</h3>
+<span class="text-primary font-bold">₹300+</span>
+</div>
+<p class="text-on-surface-variant font-body-md text-sm mb-4">Thriller • Hindi • 2h 15m</p>
+<!-- Available Seats -->
+<div class="mb-6">
+<div class="flex justify-between font-label-sm text-label-sm mb-2 text-on-surface-variant">
+<span>Available Seats</span>
+<span class="text-orange-600">Filling Fast</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-orange-500 w-[40%] rounded-full"></div>
+</div>
+</div>
+<!-- Showtimes -->
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1.5 bg-surface-container-low text-on-surface-variant rounded-md text-sm border border-outline-variant/30 hover:border-primary transition-colors cursor-pointer">11:30 AM</span>
+<span class="px-3 py-1.5 bg-surface-container-low text-on-surface-variant rounded-md text-sm border border-outline-variant/30 hover:border-primary transition-colors cursor-pointer">04:45 PM</span>
+<span class="px-3 py-1.5 bg-surface-container-low text-on-surface-variant rounded-md text-sm border border-outline-variant/30 hover:border-primary transition-colors cursor-pointer">10:30 PM</span>
+</div>
+<button class="w-full bg-primary text-white py-3.5 rounded-xl font-bold hover:bg-primary/90 transition-colors mt-auto">Book Now</button>
+</div>
+</div>
+<!-- Movie Card 3: Skyward Journey -->
+<div class="group flex flex-col bg-white rounded-2xl overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500">
+<div class="relative aspect-[2/3] overflow-hidden">
+<img alt="Skyward Journey" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGza3M6j-alSz72qc-2XUWdlr0mDhBPkkR7ctvgyVZKkus-H7XqDqvRjWbUKrVvHSHVtKnSXN2EUte3oCCB2dpZNgoGoJhxzXjoh1PEomYn69K2nrSCwW5-IXzXZwfEX6s_MkNgmj8nz11juKhxgd4CWe9cjAUNXXuZLGfacYCo2_IRNDTaxce248OGIzfKSbuc8P_Y1NC-sGD3uXmyQGZAt7ynV1_Hu9G2MP-E1wtWZFkkL-CW2aNDauYyU5519xPv6D06hV9TNng"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer">
+<div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/40">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute top-4 left-4 glass px-3 py-1 rounded-lg flex items-center gap-1.5">
+<span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface">9.2</span>
+</div>
+<div class="absolute top-4 right-4 bg-secondary text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider animate-pulse">Limited Seats</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Skyward Journey</h3>
+<span class="text-primary font-bold">₹400+</span>
+</div>
+<p class="text-on-surface-variant font-body-md text-sm mb-4">Animated • English • 1h 50m</p>
+<!-- Available Seats -->
+<div class="mb-6">
+<div class="flex justify-between font-label-sm text-label-sm mb-2 text-on-surface-variant">
+<span>Available Seats</span>
+<span class="text-secondary font-bold">Sold Out Soon</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[15%] rounded-full"></div>
+</div>
+</div>
+<!-- Showtimes -->
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1.5 bg-surface-container-low text-on-surface-variant rounded-md text-sm border border-outline-variant/30 hover:border-primary transition-colors cursor-pointer">01:00 PM</span>
+<span class="px-3 py-1.5 bg-surface-container-low text-on-surface-variant rounded-md text-sm border border-outline-variant/30 hover:border-primary transition-colors cursor-pointer">06:30 PM</span>
+<span class="px-3 py-1.5 opacity-50 bg-surface-container-low line-through text-on-surface-variant rounded-md text-sm border border-outline-variant/30 cursor-not-allowed">09:15 PM</span>
+</div>
+<button class="w-full bg-secondary text-white py-3.5 rounded-xl font-bold hover:bg-secondary/90 transition-colors mt-auto">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / Membership -->
+<section class="mb-section-gap px-margin-desktop">
+<div class="max-w-[1280px] mx-auto glass p-12 rounded-3xl flex flex-col md:flex-row items-center gap-12 border-primary/10">
+<div class="flex-1">
+<h2 class="font-display-lg text-4xl mb-4 text-on-surface">Join the Premiere Club</h2>
+<p class="text-on-surface-variant body-lg mb-0">Get exclusive invitations to movie premieres, special screenings, and 20% off on F&amp;B at the Mumbai Multiplex.</p>
+</div>
+<div class="w-full md:w-auto flex flex-col sm:flex-row gap-4">
+<input class="px-6 py-4 rounded-xl border border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary min-w-[300px]" placeholder="Enter your email" type="email"/>
+<button class="bg-primary text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-primary/20">Subscribe</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest border-t border-outline-variant">
+<div class="max-w-[1280px] mx-auto px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="space-y-6">
+<div class="font-display-lg text-display-lg text-primary">ABCD MALL</div>
+<p class="text-on-surface-variant body-md">Mumbai's premier destination for luxury shopping, fine dining, and world-class entertainment.</p>
+</div>
+<div>
+<h4 class="font-headline-md text-primary mb-8">Navigation</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-transform hover:translate-x-1 block" href="#">About Us</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-transform hover:translate-x-1 block" href="#">Store Directory</a></li>
+<li><a class="text-secondary font-semibold hover:translate-x-1 block" href="#">Multiplex Movies</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-transform hover:translate-x-1 block" href="#">Dining &amp; Cafes</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline-md text-primary mb-8">Help &amp; Info</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-transform hover:translate-x-1 block" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-transform hover:translate-x-1 block" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-transform hover:translate-x-1 block" href="contactFeedback.html">Contact Support</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-transform hover:translate-x-1 block" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline-md text-primary mb-8">Experience</h4>
+<p class="text-on-surface-variant body-md mb-6">Open Daily: 11 AM - 11 PM<br/>Movie Shows: Until 1 AM</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform">social_leaderboard</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform">alternate_email</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform">language</span>
+</div>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto px-margin-desktop py-8 border-t border-outline-variant text-center">
+<p class="text-on-surface-variant label-sm">© 2024 ABCD Mall Mumbai. All Rights Reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interactions and atmospheric effects
+        document.querySelectorAll('.movie-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Simple smooth scroll to top (mandated by JSON footer interactions)
+        const scrollToTop = () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
+</body></html>

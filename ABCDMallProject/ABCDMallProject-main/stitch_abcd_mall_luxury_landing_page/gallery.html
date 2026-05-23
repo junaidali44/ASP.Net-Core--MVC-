@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mall Moments | ABCD MALL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e4e2e1",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#1b1c1c",
+                        "on-tertiary-container": "#fffbff",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae8e7",
+                        "tertiary-container": "#71709d",
+                        "on-secondary-fixed-variant": "#8f0935",
+                        "secondary-container": "#fd6483",
+                        "outline": "#777587",
+                        "on-background": "#1b1c1c",
+                        "surface": "#fbf9f8",
+                        "primary-container": "#675df9",
+                        "on-tertiary-fixed-variant": "#43436c",
+                        "on-primary-fixed-variant": "#3622ca",
+                        "inverse-surface": "#303030",
+                        "surface-tint": "#4f44e2",
+                        "secondary-fixed-dim": "#ffb2bc",
+                        "primary": "#4d41df",
+                        "tertiary-fixed": "#e2dfff",
+                        "background": "#fbf9f8",
+                        "surface-variant": "#e4e2e1",
+                        "on-surface-variant": "#464555",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#400012",
+                        "on-secondary-container": "#670023",
+                        "on-primary-fixed": "#100069",
+                        "primary-fixed": "#e3dfff",
+                        "inverse-on-surface": "#f3f0f0",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c7c4d8",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#fbf9f8",
+                        "on-tertiary-fixed": "#17173e",
+                        "surface-dim": "#dcd9d9",
+                        "tertiary-fixed-dim": "#c3c2f3",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#ffd9dd",
+                        "surface-container": "#f0eded",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#c4c0ff",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary": "#b0284b",
+                        "on-primary-container": "#fffbff",
+                        "inverse-primary": "#c4c0ff",
+                        "tertiary": "#585883"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width": "1280px",
+                        "gutter": "24px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "section-gap": "80px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Inter"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(251, 249, 248, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .masonry-grid {
+            columns: 1;
+        }
+        @media (min-width: 768px) { .masonry-grid { columns: 2; } }
+        @media (min-width: 1024px) { .masonry-grid { columns: 4; } }
+        
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 24px;
+        }
+
+        .lightbox-active {
+            overflow: hidden;
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, #f0eded 25%, #e4e2e1 50%, #f0eded 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)] h-20">
+<div class="max-w-[1280px] mx-auto px-margin-desktop flex items-center justify-between h-full">
+<span class="font-display-lg text-display-lg text-secondary tracking-tight">ABCD MALL</span>
+<div class="hidden md:flex items-center gap-stack-lg">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="home.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="shop.html">Shops</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="FoodCourt.html">Food Court</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="Movies.html">Movies</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="Gallery.html">Gallery</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="contactFeedback.html">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<section class="max-w-[1280px] mx-auto px-margin-desktop py-section-gap">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-stack-lg mb-12">
+<div class="space-y-2">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-[0.2em]">Our Story in Frames</span>
+<h1 class="font-display-lg text-display-lg text-on-surface flex items-baseline gap-4">
+                        Mall Moments
+                        <span class="font-body-md text-body-md text-on-surface-variant font-normal px-3 py-1 bg-surface-container rounded-full">48 Captures</span>
+</h1>
+</div>
+<div class="flex items-center bg-surface-container-low p-1.5 rounded-xl border border-outline-variant/30">
+<button class="p-2 rounded-lg bg-surface-container-lowest shadow-sm text-primary transition-all" id="grid-toggle">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-all" id="masonry-toggle">
+<span class="material-symbols-outlined">dashboard</span>
+</button>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-3 mb-10 overflow-x-auto pb-4 scrollbar-hide">
+<button class="px-6 py-2.5 rounded-full bg-primary text-on-primary font-body-md hover:shadow-lg transition-all active:scale-95">All</button>
+<button class="px-6 py-2.5 rounded-full bg-white text-on-surface-variant font-body-md border border-outline-variant hover:border-primary hover:text-primary transition-all active:scale-95">Mall Interiors</button>
+<button class="px-6 py-2.5 rounded-full bg-white text-on-surface-variant font-body-md border border-outline-variant hover:border-primary hover:text-primary transition-all active:scale-95">Shop Launches</button>
+<button class="px-6 py-2.5 rounded-full bg-white text-on-surface-variant font-body-md border border-outline-variant hover:border-primary hover:text-primary transition-all active:scale-95">Food</button>
+<button class="px-6 py-2.5 rounded-full bg-white text-on-surface-variant font-body-md border border-outline-variant hover:border-primary hover:text-primary transition-all active:scale-95">Events</button>
+<button class="px-6 py-2.5 rounded-full bg-white text-on-surface-variant font-body-md border border-outline-variant hover:border-primary hover:text-primary transition-all active:scale-95">Offers</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter transition-all duration-500" id="gallery-container">
+<div class="group relative overflow-hidden rounded-xl bg-surface-container gallery-item cursor-pointer" onclick="openLightbox('https://lh3.googleusercontent.com/aida/ADBb0uhEQi6QLGTIWOMjc-cX2LzafxSiD11U44zr9slYRwB-ihbMREpNU8fVYuhA3xhV5MlSUHJAuLWI2sJj1DKrndce8vJEAW_5AN7ygGLjzBvFURleRecWSY_oOtDO5BOk2zNJdS4LCz00CKaV797GbqiWhmPanVN_g4BUL42MZMLGxyTkkgPUvVS2a9H4HZAOaVivOoY09Zx8rXjguTQ5HiM3REr66DQyh-aU_5x0Ud20tUT4sy_fYmqiAk7N', 'The Grand Façade', 'Exteriors')">
+<img alt="ABCD Mall Exterior" class="w-full h-full object-cover aspect-[4/5] transform transition-transform duration-700 group-hover:scale-110" data-alt="A cinematic evening shot of ABCD Mall in Mumbai, showcasing its stunning contemporary architecture with vibrant neon purple accent lighting. Sleek luxury cars are parked along the grand entrance driveway, while the city skyline and a coastal road glimmer in the background under a deep indigo dusk sky. The atmosphere is high-end, futuristic, and bustling with elite energy." src="https://lh3.googleusercontent.com/aida/ADBb0uhEQi6QLGTIWOMjc-cX2LzafxSiD11U44zr9slYRwB-ihbMREpNU8fVYuhA3xhV5MlSUHJAuLWI2sJj1DKrndce8vJEAW_5AN7ygGLjzBvFURleRecWSY_oOtDO5BOk2zNJdS4LCz00CKaV797GbqiWhmPanVN_g4BUL42MZMLGxyTkkgPUvVS2a9H4HZAOaVivOoY09Zx8rXjguTQ5HiM3REr66DQyh-aU_5x0Ud20tUT4sy_fYmqiAk7N"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+<span class="inline-block px-3 py-1 bg-secondary text-on-secondary rounded-full text-label-sm w-fit mb-3">Exteriors</span>
+<h3 class="font-headline-md text-headline-md text-white">The Grand Façade</h3>
+<div class="flex items-center gap-4 mt-4">
+<button class="text-white flex items-center gap-1 text-label-sm hover:text-secondary-container"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span> 124</button>
+<button class="text-white flex items-center gap-1 text-label-sm hover:text-secondary-container"><span class="material-symbols-outlined">share</span></button>
+<button class="ml-auto text-white"><span class="material-symbols-outlined">open_in_full</span></button>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl bg-surface-container gallery-item cursor-pointer" onclick="openLightbox('https://lh3.googleusercontent.com/aida/ADBb0uhhBzj2yMhcU-i2CS_ptkLmxmmWJYv8jwr3I93Muit-iR9mFjiRCqHLqttgvA5E9Kwn0_ivYSZKKuXB9yNg4wWYOWHTw8ebHQ6Otc-6rs6V4ii8w9NY-l4vwi9Fxkk9Z8GZrDbLftdDoEHCgZ3mOwpWE-C5EoLQsLu6uF65HcBPUBdRioIrvPg5pNQ-e-rZQOEr9rHjfeqP8JtI0pxl3H6AxePsKs6jUyqgNnb3Me8PlTQWh_XBRpvBuko', 'Luxury Atrium', 'Mall Interiors')">
+<img alt="Mall Interior Atrium" class="w-full h-full object-cover aspect-square transform transition-transform duration-700 group-hover:scale-110" data-alt="The breathtaking interior atrium of ABCD Mall, featuring a massive circular glass skylight that floods the space with warm, golden hour light. Luxury storefronts like Gucci and Prada line the polished marble floors, where shoppers walk beneath palm trees growing indoors. The architecture blends classical pillars with modern glass and steel, creating a majestic and airy atmosphere of extreme opulence." src="https://lh3.googleusercontent.com/aida/ADBb0uhhBzj2yMhcU-i2CS_ptkLmxmmWJYv8jwr3I93Muit-iR9mFjiRCqHLqttgvA5E9Kwn0_ivYSZKKuXB9yNg4wWYOWHTw8ebHQ6Otc-6rs6V4ii8w9NY-l4vwi9Fxkk9Z8GZrDbLftdDoEHCgZ3mOwpWE-C5EoLQsLu6uF65HcBPUBdRioIrvPg5pNQ-e-rZQOEr9rHjfeqP8JtI0pxl3H6AxePsKs6jUyqgNnb3Me8PlTQWh_XBRpvBuko"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+<span class="inline-block px-3 py-1 bg-secondary text-on-secondary rounded-full text-label-sm w-fit mb-3">Mall Interiors</span>
+<h3 class="font-headline-md text-headline-md text-white">Luxury Atrium</h3>
+<div class="flex items-center gap-4 mt-4">
+<button class="text-white flex items-center gap-1 text-label-sm hover:text-secondary-container"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span> 256</button>
+<button class="text-white flex items-center gap-1 text-label-sm hover:text-secondary-container"><span class="material-symbols-outlined">share</span></button>
+<button class="ml-auto text-white"><span class="material-symbols-outlined">open_in_full</span></button>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl bg-surface-container gallery-item cursor-pointer" onclick="openLightbox('https://lh3.googleusercontent.com/aida/ADBb0uiHNpeT7T_swLFMjF2rMULsdC05WjMUbToPehacqeOYWVpPqy3_RPcjI94KoRmI820oL8wMSwNKozFKf3qp9dskHJ8OE9hebHmmUOJ3jXsnBATgFLHO-aO3Gum25rLIG2rxuve0VBJqUIbcUJHUj2iMPG411O8tm9dQxFhcyWlVD1QS7cuChCiLGBAEEP5ex-o8xCyoFA-U-6cEGhgl30s-WVFX1z4IR-duraQUoD-2lsGAxWodRIt8E4Gq', 'Neon Dining', 'Food Court')">
+<img alt="Food Court Interior" class="w-full h-full object-cover aspect-[4/5] transform transition-transform duration-700 group-hover:scale-110" data-alt="A futuristic food court at ABCD Mall, designed with a cyberpunk Neo-Tokyo aesthetic. Glowing blue and orange neon light rings hang from a mirrored ceiling, reflecting the vibrant food stalls like Neo-Tokyo Ramen and The Lobster Bar. People lounge in soft, organic-shaped gray chairs, while large digital screens display immersive art. The mood is high-energy, modern, and technologically sophisticated." src="https://lh3.googleusercontent.com/aida/ADBb0uiHNpeT7T_swLFMjF2rMULsdC05WjMUbToPehacqeOYWVpPqy3_RPcjI94KoRmI820oL8wMSwNKozFKf3qp9dskHJ8OE9hebHmmUOJ3jXsnBATgFLHO-aO3Gum25rLIG2rxuve0VBJqUIbcUJHUj2iMPG411O8tm9dQxFhcyWlVD1QS7cuChCiLGBAEEP5ex-o8xCyoFA-U-6cEGhgl30s-WVFX1z4IR-duraQUoD-2lsGAxWodRIt8E4Gq"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+<span class="inline-block px-3 py-1 bg-secondary text-on-secondary rounded-full text-label-sm w-fit mb-3">Food Court</span>
+<h3 class="font-headline-md text-headline-md text-white">Neon Dining</h3>
+<div class="flex items-center gap-4 mt-4">
+<button class="text-white flex items-center gap-1 text-label-sm hover:text-secondary-container"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span> 89</button>
+<button class="text-white flex items-center gap-1 text-label-sm hover:text-secondary-container"><span class="material-symbols-outlined">share</span></button>
+<button class="ml-auto text-white"><span class="material-symbols-outlined">open_in_full</span></button>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl bg-surface-container gallery-item cursor-pointer" onclick="openLightbox('https://lh3.googleusercontent.com/aida/ADBb0ujEC0MFnSZNb6wa7gT71GXqBclZ3rOtfHe2dBXioHvwhlp7yRGi_oCGSdBIoM2NLQ90pzeLHkHDILTxwJkp6RTI5wQWjPWqM7MBXc3VLd_QoBhwCZOu4Sq6k6NCRWqjCXIJROdXeqN0_OM-FRD4Gsk1p2-yVbXHU1B5FdLHROsGjqLAqtCRSWrIs-fJxW-jChIe2Tk8VfGFhX31StsK6X2KALpObgM0gFIYq99VMApWyQK8SwKG4Q39fsrz', 'Elite Cinema Lounge', 'Cinema')">
+<img alt="Cinema Lounge" class="w-full h-full object-cover aspect-square transform transition-transform duration-700 group-hover:scale-110" data-alt="The ultra-exclusive cinema lounge at ABCD Mall, featuring plush purple velvet armchairs and gold-accented Art Deco wall motifs. A premium snack bar with a marble countertop serves gourmet popcorn, while movie posters for blockbuster films like 'Fighter' are illuminated in high-tech digital frames. The lighting is intimate with purple neon glows and warm recessed lights, providing a world-class cinematic luxury experience." src="https://lh3.googleusercontent.com/aida/ADBb0ujEC0MFnSZNb6wa7gT71GXqBclZ3rOtfHe2dBXioHvwhlp7yRGi_oCGSdBIoM2NLQ90pzeLHkHDILTxwJkp6RTI5wQWjPWqM7MBXc3VLd_QoBhwCZOu4Sq6k6NCRWqjCXIJROdXeqN0_OM-FRD4Gsk1p2-yVbXHU1B5FdLHROsGjqLAqtCRSWrIs-fJxW-jChIe2Tk8VfGFhX31StsK6X2KALpObgM0gFIYq99VMApWyQK8SwKG4Q39fsrz"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+<span class="inline-block px-3 py-1 bg-secondary text-on-secondary rounded-full text-label-sm w-fit mb-3">Cinema</span>
+<h3 class="font-headline-md text-headline-md text-white">Elite Lounge</h3>
+<div class="flex items-center gap-4 mt-4">
+<button class="text-white flex items-center gap-1 text-label-sm hover:text-secondary-container"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span> 312</button>
+<button class="text-white flex items-center gap-1 text-label-sm hover:text-secondary-container"><span class="material-symbols-outlined">share</span></button>
+<button class="ml-auto text-white"><span class="material-symbols-outlined">open_in_full</span></button>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl bg-surface-container gallery-item cursor-pointer" onclick="openLightbox('https://lh3.googleusercontent.com/aida/ADBb0uhEQi6QLGTIWOMjc-cX2LzafxSiD11U44zr9slYRwB-ihbMREpNU8fVYuhA3xhV5MlSUHJAuLWI2sJj1DKrndce8vJEAW_5AN7ygGLjzBvFURleRecWSY_oOtDO5BOk2zNJdS4LCz00CKaV797GbqiWhmPanVN_g4BUL42MZMLGxyTkkgPUvVS2a9H4HZAOaVivOoY09Zx8rXjguTQ5HiM3REr66DQyh-aU_5x0Ud20tUT4sy_fYmqiAk7N', 'Coastal View Entrance', 'Exteriors')">
+<img alt="Mall Exterior Entrance" class="w-full h-full object-cover aspect-square transform transition-transform duration-700 group-hover:scale-110" data-alt="A cinematic evening shot of ABCD Mall in Mumbai, showcasing its stunning contemporary architecture with vibrant neon purple accent lighting. Sleek luxury cars are parked along the grand entrance driveway, while the city skyline and a coastal road glimmer in the background under a deep indigo dusk sky. The atmosphere is high-end, futuristic, and bustling with elite energy." src="https://lh3.googleusercontent.com/aida/ADBb0uhEQi6QLGTIWOMjc-cX2LzafxSiD11U44zr9slYRwB-ihbMREpNU8fVYuhA3xhV5MlSUHJAuLWI2sJj1DKrndce8vJEAW_5AN7ygGLjzBvFURleRecWSY_oOtDO5BOk2zNJdS4LCz00CKaV797GbqiWhmPanVN_g4BUL42MZMLGxyTkkgPUvVS2a9H4HZAOaVivOoY09Zx8rXjguTQ5HiM3REr66DQyh-aU_5x0Ud20tUT4sy_fYmqiAk7N"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+<span class="inline-block px-3 py-1 bg-secondary text-on-secondary rounded-full text-label-sm w-fit mb-3">Exteriors</span>
+<h3 class="font-headline-md text-headline-md text-white">Coastal Entrance</h3>
+<div class="flex items-center gap-4 mt-4">
+<button class="text-white flex items-center gap-1 text-label-sm hover:text-secondary-container"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span> 155</button>
+<button class="text-white flex items-center gap-1 text-label-sm hover:text-secondary-container"><span class="material-symbols-outlined">share</span></button>
+<button class="ml-auto text-white"><span class="material-symbols-outlined">open_in_full</span></button>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl bg-surface-container gallery-item cursor-pointer" onclick="openLightbox('https://lh3.googleusercontent.com/aida/ADBb0uhhBzj2yMhcU-i2CS_ptkLmxmmWJYv8jwr3I93Muit-iR9mFjiRCqHLqttgvA5E9Kwn0_ivYSZKKuXB9yNg4wWYOWHTw8ebHQ6Otc-6rs6V4ii8w9NY-l4vwi9Fxkk9Z8GZrDbLftdDoEHCgZ3mOwpWE-C5EoLQsLu6uF65HcBPUBdRioIrvPg5pNQ-e-rZQOEr9rHjfeqP8JtI0pxl3H6AxePsKs6jUyqgNnb3Me8PlTQWh_XBRpvBuko', 'Main Court', 'Mall Interiors')">
+<img alt="Mall Interior Center" class="w-full h-full object-cover aspect-[4/5] transform transition-transform duration-700 group-hover:scale-110" data-alt="The breathtaking interior atrium of ABCD Mall, featuring a massive circular glass skylight that floods the space with warm, golden hour light. Luxury storefronts like Gucci and Prada line the polished marble floors, where shoppers walk beneath palm trees growing indoors. The architecture blends classical pillars with modern glass and steel, creating a majestic and airy atmosphere of extreme opulence." src="https://lh3.googleusercontent.com/aida/ADBb0uhhBzj2yMhcU-i2CS_ptkLmxmmWJYv8jwr3I93Muit-iR9mFjiRCqHLqttgvA5E9Kwn0_ivYSZKKuXB9yNg4wWYOWHTw8ebHQ6Otc-6rs6V4ii8w9NY-l4vwi9Fxkk9Z8GZrDbLftdDoEHCgZ3mOwpWE-C5EoLQsLu6uF65HcBPUBdRioIrvPg5pNQ-e-rZQOEr9rHjfeqP8JtI0pxl3H6AxePsKs6jUyqgNnb3Me8PlTQWh_XBRpvBuko"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+<span class="inline-block px-3 py-1 bg-secondary text-on-secondary rounded-full text-label-sm w-fit mb-3">Mall Interiors</span>
+<h3 class="font-headline-md text-headline-md text-white">Main Atrium</h3>
+<div class="flex items-center gap-4 mt-4">
+<button class="text-white flex items-center gap-1 text-label-sm hover:text-secondary-container"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span> 442</button>
+<button class="text-white flex items-center gap-1 text-label-sm hover:text-secondary-container"><span class="material-symbols-outlined">share</span></button>
+<button class="ml-auto text-white"><span class="material-symbols-outlined">open_in_full</span></button>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl bg-surface-container gallery-item cursor-pointer" onclick="openLightbox('https://lh3.googleusercontent.com/aida/ADBb0uiHNpeT7T_swLFMjF2rMULsdC05WjMUbToPehacqeOYWVpPqy3_RPcjI94KoRmI820oL8wMSwNKozFKf3qp9dskHJ8OE9hebHmmUOJ3jXsnBATgFLHO-aO3Gum25rLIG2rxuve0VBJqUIbcUJHUj2iMPG411O8tm9dQxFhcyWlVD1QS7cuChCiLGBAEEP5ex-o8xCyoFA-U-6cEGhgl30s-WVFX1z4IR-duraQUoD-2lsGAxWodRIt8E4Gq', 'Arcade Nights', 'Food Court')">
+<img alt="Food Court Arcade" class="w-full h-full object-cover aspect-square transform transition-transform duration-700 group-hover:scale-110" data-alt="A futuristic food court at ABCD Mall, designed with a cyberpunk Neo-Tokyo aesthetic. Glowing blue and orange neon light rings hang from a mirrored ceiling, reflecting the vibrant food stalls like Neo-Tokyo Ramen and The Lobster Bar. People lounge in soft, organic-shaped gray chairs, while large digital screens display immersive art. The mood is high-energy, modern, and technologically sophisticated." src="https://lh3.googleusercontent.com/aida/ADBb0uiHNpeT7T_swLFMjF2rMULsdC05WjMUbToPehacqeOYWVpPqy3_RPcjI94KoRmI820oL8wMSwNKozFKf3qp9dskHJ8OE9hebHmmUOJ3jXsnBATgFLHO-aO3Gum25rLIG2rxuve0VBJqUIbcUJHUj2iMPG411O8tm9dQxFhcyWlVD1QS7cuChCiLGBAEEP5ex-o8xCyoFA-U-6cEGhgl30s-WVFX1z4IR-duraQUoD-2lsGAxWodRIt8E4Gq"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+<span class="inline-block px-3 py-1 bg-secondary text-on-secondary rounded-full text-label-sm w-fit mb-3">Food Court</span>
+<h3 class="font-headline-md text-headline-md text-white">Arcade Nights</h3>
+<div class="flex items-center gap-4 mt-4">
+<button class="text-white flex items-center gap-1 text-label-sm hover:text-secondary-container"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span> 190</button>
+<button class="text-white flex items-center gap-1 text-label-sm hover:text-secondary-container"><span class="material-symbols-outlined">share</span></button>
+<button class="ml-auto text-white"><span class="material-symbols-outlined">open_in_full</span></button>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl bg-surface-container gallery-item cursor-pointer" onclick="openLightbox('https://lh3.googleusercontent.com/aida/ADBb0ujEC0MFnSZNb6wa7gT71GXqBclZ3rOtfHe2dBXioHvwhlp7yRGi_oCGSdBIoM2NLQ90pzeLHkHDILTxwJkp6RTI5wQWjPWqM7MBXc3VLd_QoBhwCZOu4Sq6k6NCRWqjCXIJROdXeqN0_OM-FRD4Gsk1p2-yVbXHU1B5FdLHROsGjqLAqtCRSWrIs-fJxW-jChIe2Tk8VfGFhX31StsK6X2KALpObgM0gFIYq99VMApWyQK8SwKG4Q39fsrz', 'Popcorn &amp; Premium', 'Cinema')">
+<img alt="Cinema Concession" class="w-full h-full object-cover aspect-[4/5] transform transition-transform duration-700 group-hover:scale-110" data-alt="The ultra-exclusive cinema lounge at ABCD Mall, featuring plush purple velvet armchairs and gold-accented Art Deco wall motifs. A premium snack bar with a marble countertop serves gourmet popcorn, while movie posters for blockbuster films like 'Fighter' are illuminated in high-tech digital frames. The lighting is intimate with purple neon glows and warm recessed lights, providing a world-class cinematic luxury experience." src="https://lh3.googleusercontent.com/aida/ADBb0ujEC0MFnSZNb6wa7gT71GXqBclZ3rOtfHe2dBXioHvwhlp7yRGi_oCGSdBIoM2NLQ90pzeLHkHDILTxwJkp6RTI5wQWjPWqM7MBXc3VLd_QoBhwCZOu4Sq6k6NCRWqjCXIJROdXeqN0_OM-FRD4Gsk1p2-yVbXHU1B5FdLHROsGjqLAqtCRSWrIs-fJxW-jChIe2Tk8VfGFhX31StsK6X2KALpObgM0gFIYq99VMApWyQK8SwKG4Q39fsrz"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+<span class="inline-block px-3 py-1 bg-secondary text-on-secondary rounded-full text-label-sm w-fit mb-3">Cinema</span>
+<h3 class="font-headline-md text-headline-md text-white">Gourmet Corner</h3>
+<div class="flex items-center gap-4 mt-4">
+<button class="text-white flex items-center gap-1 text-label-sm hover:text-secondary-container"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span> 277</button>
+<button class="text-white flex items-center gap-1 text-label-sm hover:text-secondary-container"><span class="material-symbols-outlined">share</span></button>
+<button class="ml-auto text-white"><span class="material-symbols-outlined">open_in_full</span></button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-section-gap">
+<button class="group flex items-center gap-3 px-8 py-4 bg-white border border-outline-variant rounded-full font-headline-md text-primary hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 shadow-sm active:scale-95" id="load-more">
+<span>Load More Moments</span>
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform duration-500">expand_more</span>
+</button>
+</div>
+</section>
+</main>
+<footer class="bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant">
+<div class="max-w-[1280px] mx-auto px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="col-span-1 md:col-span-1 space-y-6">
+<span class="font-display-lg text-display-lg text-primary">ABCD MALL</span>
+<p class="font-body-md text-on-surface-variant max-w-xs">Experience the pinnacle of luxury retail and entertainment in the heart of Mumbai.</p>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline-md text-headline-md text-on-surface">Explore</h4>
+<ul class="space-y-2">
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-all flex items-center gap-2 group" href="#"><span class="w-1.5 h-1.5 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-all"></span>Shops</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-all flex items-center gap-2 group" href="#"><span class="w-1.5 h-1.5 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-all"></span>Dining</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-all flex items-center gap-2 group" href="#"><span class="w-1.5 h-1.5 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-all"></span>Cinema</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-all flex items-center gap-2 group" href="#"><span class="w-1.5 h-1.5 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-all"></span>About</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline-md text-headline-md text-on-surface">Information</h4>
+<ul class="space-y-2">
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Careers</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Privacy Policy</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Terms of Service</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="contactFeedback.html">Contact</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline-md text-headline-md text-on-surface">Stay Connected</h4>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white flex items-center justify-center border border-outline-variant hover:text-primary hover:border-primary transition-all" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white flex items-center justify-center border border-outline-variant hover:text-primary hover:border-primary transition-all" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+</a>
+</div>
+</div>
+<div class="col-span-full pt-12 border-t border-outline-variant flex flex-col md:flex-row justify-between gap-4">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 ABCD Mall Mumbai. All Rights Reserved.</p>
+<button class="flex items-center gap-2 font-label-sm text-label-sm text-primary hover:translate-y--1 transition-all" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    BACK TO TOP <span class="material-symbols-outlined text-sm">arrow_upward</span>
+</button>
+</div>
+</div>
+</footer>
+<div class="fixed inset-0 z-[100] bg-on-surface/95 backdrop-blur-xl hidden flex-col items-center justify-center p-4 md:p-8" id="lightbox">
+<button class="absolute top-8 right-8 text-white hover:text-secondary transition-all" onclick="closeLightbox()">
+<span class="material-symbols-outlined text-4xl">close</span>
+</button>
+<div class="w-full max-w-6xl flex flex-col md:flex-row items-center gap-stack-lg">
+<div class="relative group w-full md:w-3/4 flex items-center justify-center">
+<button class="absolute left-4 p-4 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined text-3xl">chevron_left</span>
+</button>
+<img alt="Lightbox Large" class="max-h-[75vh] w-auto rounded-xl shadow-2xl" id="lightbox-img" src=""/>
+<button class="absolute right-4 p-4 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined text-3xl">chevron_right</span>
+</button>
+</div>
+<div class="w-full md:w-1/4 space-y-6 text-white text-center md:text-left">
+<div>
+<span class="px-3 py-1 bg-secondary rounded-full text-label-sm inline-block mb-4" id="lightbox-tag">Category</span>
+<h2 class="font-display-lg text-headline-lg leading-tight" id="lightbox-title">Image Title</h2>
+</div>
+<p class="font-body-md text-white/70">A moment captured at ABCD Mall, showcasing the unique blend of luxury and lifestyle experience we provide to our guests every day.</p>
+<div class="flex flex-col gap-3 pt-6 border-t border-white/10">
+<button class="flex items-center justify-center gap-2 w-full py-4 bg-primary rounded-xl font-headline-md text-white hover:bg-primary-container transition-all active:scale-95">
+<span class="material-symbols-outlined">download</span> Download Original
+                    </button>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 py-3 bg-white/10 rounded-xl hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined">favorite</span> Like
+                        </button>
+<button class="flex items-center justify-center gap-2 py-3 bg-white/10 rounded-xl hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined">share</span> Share
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+        const galleryContainer = document.getElementById('gallery-container');
+        const gridToggle = document.getElementById('grid-toggle');
+        const masonryToggle = document.getElementById('masonry-toggle');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxTitle = document.getElementById('lightbox-title');
+        const lightboxTag = document.getElementById('lightbox-tag');
+        const loadMoreBtn = document.getElementById('load-more');
+
+        gridToggle.addEventListener('click', () => {
+            galleryContainer.classList.remove('masonry-grid');
+            galleryContainer.classList.add('grid', 'grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-4');
+            gridToggle.classList.add('bg-surface-container-lowest', 'shadow-sm', 'text-primary');
+            gridToggle.classList.remove('text-on-surface-variant');
+            masonryToggle.classList.remove('bg-surface-container-lowest', 'shadow-sm', 'text-primary');
+            masonryToggle.classList.add('text-on-surface-variant');
+        });
+
+        masonryToggle.addEventListener('click', () => {
+            galleryContainer.classList.add('masonry-grid');
+            galleryContainer.classList.remove('grid', 'grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-4');
+            masonryToggle.classList.add('bg-surface-container-lowest', 'shadow-sm', 'text-primary');
+            masonryToggle.classList.remove('text-on-surface-variant');
+            gridToggle.classList.remove('bg-surface-container-lowest', 'shadow-sm', 'text-primary');
+            gridToggle.classList.add('text-on-surface-variant');
+        });
+
+        function openLightbox(src, title, tag) {
+            lightboxImg.src = src;
+            lightboxTitle.textContent = title;
+            lightboxTag.textContent = tag;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            document.body.classList.add('lightbox-active');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            document.body.classList.remove('lightbox-active');
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        loadMoreBtn.addEventListener('click', () => {
+            const originalContent = loadMoreBtn.innerHTML;
+            loadMoreBtn.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <svg class="animate-spin h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Capturing More...</span>
+                </div>
+            `;
+            loadMoreBtn.disabled = true;
+            
+            setTimeout(() => {
+                loadMoreBtn.innerHTML = originalContent;
+                loadMoreBtn.disabled = false;
+                alert('In a real scenario, more beautiful moments would load here!');
+            }, 1500);
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body></html>
